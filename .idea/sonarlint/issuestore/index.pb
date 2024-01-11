@@ -3,8 +3,6 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 Q
 !src/main/java/Appinitializer.java,d\d\dd3c2df894bbe7f469c80149c690b6f4ea350470
-a
-1src/main/java/controller/DashboardController.java,5\7\57b6d01234c1bde24f392bfb8c59b6a94923f180
 K
 src/main/java/dao/test.java,7\8\781aa29b190e202569014a0a05dfe2b4ba9c3f62
 Y
@@ -21,3 +19,5 @@ e
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+c
+3src/main/java/controller/ItemCatelogController.java,b\b\bbd47dc5e6a31d9cfa50396144883d0d394e2d5d
