@@ -2,14 +2,20 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class UserDashboardController {
     public Circle logo;
+    public BorderPane pane;
 
     @FXML
     public void initialize(){
@@ -18,9 +24,15 @@ public class UserDashboardController {
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) {
+
     }
 
-    public void ItemCatelogBtnOnAction(ActionEvent actionEvent) {
+    public void ItemCatelogBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ItemCatelog.fxml"))));
+        stage.show();
+        stage.setTitle("Item Catelog");
+        stage.centerOnScreen();
     }
 
     public void ServiceBtnOnAction(ActionEvent actionEvent) {
@@ -32,6 +44,11 @@ public class UserDashboardController {
     public void ReportsBtnOnAction(ActionEvent actionEvent) {
     }
 
-    public void AddItemBtnOnAction(ActionEvent actionEvent) {
+    public void AddItemBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddItemForm.fxml"))));
+        stage.show();
+        stage.setTitle("Add New Item");
+        stage.centerOnScreen();
     }
 }

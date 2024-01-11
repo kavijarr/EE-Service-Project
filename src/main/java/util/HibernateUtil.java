@@ -1,4 +1,4 @@
-package dao.util;
+package util;
 
 import entity.Item;
 import org.hibernate.Session;

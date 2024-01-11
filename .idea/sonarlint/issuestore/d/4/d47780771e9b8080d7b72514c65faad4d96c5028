@@ -1,0 +1,14 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ù÷ı¢Ï1
+u
+java:S1104"SMake lblDate a static final constant or non-public and provide accessors if needed.(…“À„ÿÿÿÿÿ8İ¬ú¢Ï1
+p
+java:S1104"SMake lblTime a static final constant or non-public and provide accessors if needed.(¿°×•8İ¬ú¢Ï1
+r
+java:S1104"PMake pane a static final constant or non-public and provide accessors if needed.(ÃéÇ¶ûÿÿÿÿ8İ¬ú¢Ï1
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(´Æİîúÿÿÿÿ8ã¬ú¢Ï1
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´Æİîúÿÿÿÿ8å¬ú¢Ï1
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ‘ì8å¬ú¢Ï1
+O
+java:S1172"2Remove this unused method parameter "actionEvent".(ğ‘ì8æ¬ú¢Ï1
