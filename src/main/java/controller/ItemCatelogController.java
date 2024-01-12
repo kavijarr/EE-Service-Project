@@ -139,7 +139,7 @@ public class ItemCatelogController {
         orderTable.setShowRoot(false);
     }
 
-    public void testDrag(MouseEvent mouseEvent) {
+    public void ReloadAction(MouseEvent mouseEvent) {
         reloadBtn.fire();
     }
 }

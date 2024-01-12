@@ -138,7 +138,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ScrollPane fitToHeight="true" onMouseMoved="#testDrag" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                  <ScrollPane fitToHeight="true" onMouseMoved="#ReloadAction" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <content>
                         <GridPane fx:id="itemGrid" prefHeight="29.0" prefWidth="33.0">
                            <rowConstraints>
