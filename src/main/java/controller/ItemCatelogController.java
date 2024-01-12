@@ -14,12 +14,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -29,6 +27,7 @@ import util.BoType;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public class ItemCatelogController {
 
@@ -120,19 +119,27 @@ public class ItemCatelogController {
         for (OrderTm tm: tmList) {
             if (tm.getId().equals(dto.getId())){
                 isExist=true;
-
+                tm.setQty(tm.getQty()+orderTm.getQty());
+                tm.setAmount(tm.getAmount()+orderTm.getAmount());
+                total+=orderTm.getAmount();
             }
         }
-        tmList.add(orderTm);
-        System.out.println(tmList);
-        System.out.println(tmList.size());
-
+        if (isExist!=true){
+            tmList.add(orderTm);
+            total+=orderTm.getAmount();
+        }
+//        System.out.println(tmList);
+//        System.out.println(tmList.size());
     }
 
     public void ReloadBtnOnAction(ActionEvent actionEvent) {
-//        lblTotal.setText(String.valueOf(total));
-//        TreeItem<OrderTm> treeObject = new RecursiveTreeItem<OrderTm>(tmList, RecursiveTreeObject::getChildren);
-//        orderTable.setRoot(treeObject);
-//        orderTable.setShowRoot(false);
+        lblTotal.setText(String.valueOf(total));
+        TreeItem<OrderTm> treeObject = new RecursiveTreeItem<OrderTm>(tmList, RecursiveTreeObject::getChildren);
+        orderTable.setRoot(treeObject);
+        orderTable.setShowRoot(false);
+    }
+
+    public void testDrag(MouseEvent mouseEvent) {
+        reloadBtn.fire();
     }
 }
