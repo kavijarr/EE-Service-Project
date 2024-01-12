@@ -23,7 +23,16 @@ public class ItemDaoImpl implements ItemDao {
 
     @Override
     public Boolean update(Item entity) {
-        return null;
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Item item = session.find(Item.class, entity.getId());
+        item.setName(entity.getName());
+        item.setQtyOnHand(entity.getQtyOnHand());
+        item.setUnitPrice(entity.getUnitPrice());
+        session.save(item);
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
@@ -32,8 +41,11 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public List getAll(Item entity) {
-        return null;
+    public List<Item> getAll() {
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM Item");
+        List<Item> itemList = query.list();
+        return itemList;
     }
 
     @Override
@@ -48,5 +60,13 @@ public class ItemDaoImpl implements ItemDao {
         }
         session.close();
         return null;
+    }
+
+    @Override
+    public Item getItem(String id) {
+        Session session = HibernateUtil.getSession();
+        Item item = session.find(Item.class,id);
+        session.close();
+        return item;
     }
 }

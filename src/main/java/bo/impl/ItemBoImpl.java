@@ -7,6 +7,9 @@ import dto.ItemDto;
 import entity.Item;
 import util.DaoType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemBoImpl implements ItemBo {
 
     ItemDao itemDao = DaoFactory.getInstance().getDao(DaoType.ITEM);
@@ -33,5 +36,45 @@ public class ItemBoImpl implements ItemBo {
         }else {
             return ("P001");
         }
+    }
+
+    @Override
+    public List<ItemDto> getAll() {
+        List<Item> entityList = itemDao.getAll();
+        List<ItemDto> dtoList = new ArrayList<>();
+        for (Item entity:entityList) {
+            dtoList.add(new ItemDto(
+                    entity.getId(),
+                    entity.getName(),
+                    entity.getQtyOnHand(),
+                    entity.getUnitPrice(),
+                    entity.getImgUrl()
+            ));
+        }
+        return dtoList;
+    }
+
+    @Override
+    public ItemDto getItem(String id) {
+        Item entity = itemDao.getItem(id);
+        return new ItemDto(
+                entity.getId(),
+                entity.getName(),
+                entity.getQtyOnHand(),
+                entity.getUnitPrice(),
+                entity.getImgUrl()
+        );
+    }
+
+    @Override
+    public Boolean updateItem(ItemDto dto) {
+        Item entity = new Item(
+                dto.getId(),
+                dto.getName(),
+                dto.getQtyOnHand(),
+                dto.getUnitPrice(),
+                dto.getImgUrl()
+                );
+        return itemDao.update(entity);
     }
 }

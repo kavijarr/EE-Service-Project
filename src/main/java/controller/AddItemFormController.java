@@ -3,6 +3,7 @@ package controller;
 import bo.BoFactory;
 import bo.ItemBo;
 import com.jfoenix.controls.JFXTextField;
+import dao.custom.ItemDao;
 import dto.ItemDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -20,6 +22,7 @@ import util.BoType;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 public class AddItemFormController {
     public Circle logo;
@@ -31,10 +34,12 @@ public class AddItemFormController {
     public ImageView viewImg;
     private String imgUrl;
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    private List<ItemDto> itemList;
 
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
+
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
