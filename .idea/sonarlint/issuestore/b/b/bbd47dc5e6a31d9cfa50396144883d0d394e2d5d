@@ -1,19 +1,60 @@
 
-g	java:S112E"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8³ÈÇïÏ1
-r
-java:S1104"PMake logo a static final constant or non-public and provide accessors if needed.(íÂÍÚøÿÿÿÿ8³ÈÇïÏ1
-r
-java:S1104"PMake pane a static final constant or non-public and provide accessors if needed.(ÃéÇ¶ûÿÿÿÿ8³ÈÇïÏ1
-p
-java:S1104"TMake itemGrid a static final constant or non-public and provide accessors if needed.(ãÑj8³ÈÇïÏ1
-v
-java:S1104 "TMake gridPane a static final constant or non-public and provide accessors if needed.(ğÍÑúÿÿÿÿ8´ÈÇïÏ1
-s
-java:S1450""WRemove the "itemList" field and declare it as a local variable in the relevant methods.(şİùv8ĞÈÇïÏ1
-W
-java:S2209#"5Change this instance-reference to a static reference.(ÎŠ±®úÿÿÿÿ8ÑÈÇïÏ1
-j	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÇ’²8ÛÈÇïÏ1
-O
-java:S1172K"2Remove this unused method parameter "actionEvent".(ëÇ’²8ÜÈÇïÏ1
+g	java:S112U"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ŠôËôÏ1
 Q
-java:S1128"/Remove this unused import 'dao.custom.ItemDao'.(«µÒ£ıÿÿÿÿ8ÚËïÏ1
+java:S3740("/Provide the parametrized type for this generic.(ŠÄÌûÿÿÿÿ8ŠôËôÏ1
+L
+java:S3740)"/Provide the parametrized type for this generic.(™¼…ÿ8ŠôËôÏ1
+L
+java:S3740*"/Provide the parametrized type for this generic.(»§²8ŠôËôÏ1
+L
+java:S3740,"/Provide the parametrized type for this generic.(ŞÊ½½8ŠôËôÏ1
+Q
+java:S3740-"/Provide the parametrized type for this generic.(ê¦„÷üÿÿÿÿ8ŠôËôÏ1
+r
+java:S1104$"PMake logo a static final constant or non-public and provide accessors if needed.(íÂÍÚøÿÿÿÿ8‹ôËôÏ1
+r
+java:S1104%"PMake pane a static final constant or non-public and provide accessors if needed.(ÃéÇ¶ûÿÿÿÿ8‹ôËôÏ1
+p
+java:S1104&"TMake itemGrid a static final constant or non-public and provide accessors if needed.(ãÑj8‹ôËôÏ1
+v
+java:S1104'"TMake gridPane a static final constant or non-public and provide accessors if needed.(ğÍÑúÿÿÿÿ8‹ôËôÏ1
+y
+java:S1104("WMake colItemName a static final constant or non-public and provide accessors if needed.(ŠÄÌûÿÿÿÿ8‹ôËôÏ1
+o
+java:S1104)"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8‹ôËôÏ1
+r
+java:S1104*"UMake colOption a static final constant or non-public and provide accessors if needed.(»§²8‹ôËôÏ1
+q
+java:S1104+"TMake lblTotal a static final constant or non-public and provide accessors if needed.(ÿêìˆ8‹ôËôÏ1
+s
+java:S1104,"VMake orderTable a static final constant or non-public and provide accessors if needed.(ŞÊ½½8‹ôËôÏ1
+w
+java:S1104-"UMake colAmount a static final constant or non-public and provide accessors if needed.(ê¦„÷üÿÿÿÿ8‹ôËôÏ1
+w
+java:S1104."UMake reloadBtn a static final constant or non-public and provide accessors if needed.(ŒÌÄóùÿÿÿÿ8‹ôËôÏ1
+s
+java:S14500"WRemove the "itemList" field and declare it as a local variable in the relevant methods.(şİùv8«ôËôÏ1
+W
+java:S22091"5Change this instance-reference to a static reference.(ÎŠ±®úÿÿÿÿ8µöÓôÏ1
+j	java:S100a"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÇ’²8·ôËôÏ1
+O
+java:S1172a"2Remove this unused method parameter "actionEvent".(ëÇ’²8·ôËôÏ1
+L	java:S106j"+Replace this use of System.out by a logger.(Ó›¬œøÿÿÿÿ8¾ôËôÏ1
+]
+java:S1854z";Remove this useless assignment to local variable "isExist".(Š”¹‡üÿÿÿÿ8Ä¦ÌôÏ1
+N
+java:S1481w",Remove this unused "isExist" local variable.(¤öù£şÿÿÿÿ8¿ôËôÏ1
+L	java:S106"+Replace this use of System.out by a logger.(¸à¡×ÿÿÿÿÿ8¿ôËôÏ1
+H	java:S106€"+Replace this use of System.out by a logger.(‰‡Â¡8¿ôËôÏ1
+p	java:S100„"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ğñçÿÿÿÿÿ8ÀôËôÏ1
+^	java:S125…"<This block of commented-out lines of code should be removed.(½ì›úÿÿÿÿ8ïÅÏôÏ1
+`
+java:S1128"CRemove this unused import 'com.jfoenix.controls.RecursiveTreeItem'.(Äğª£8ÊöÓôÏ1
+|
+java:S1128"ZRemove this unused import 'com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject'.(û©ó‹şÿÿÿÿ8ÊöÓôÏ1
+M
+java:S1128"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8ÊöÓôÏ1
+W
+java:S1128":Remove this unused import 'javafx.scene.control.TreeItem'.(èæË³8ÊöÓôÏ1
+J
+java:S1144h"-Remove this unused private "setTotal" method.(ŠÿÆÏ8ÁôËôÏ1

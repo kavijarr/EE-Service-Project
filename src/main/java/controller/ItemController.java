@@ -31,11 +31,13 @@ public class ItemController {
     private ItemDto item;
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     private int qty = 0;
+    private static ItemCatelogController controller = new ItemCatelogController();
 
     public void AddtoCartBtnOnAction(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ItemCatelog.fxml"));
-        ItemCatelogController controller = fxmlLoader.getController();
-        controller.addToCart(itemBo.getItem(lblItemId.getText()),qty);
+        ItemDto dto = itemBo.getItem(lblItemId.getText());
+        if (dto!=null){
+            controller.addToCart(itemBo.getItem(lblItemId.getText()),qty);
+        }
     }
 
     public void ItemDetailsBtnOnAction(ActionEvent actionEvent) throws IOException {

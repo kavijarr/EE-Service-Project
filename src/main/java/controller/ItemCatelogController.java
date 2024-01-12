@@ -3,21 +3,28 @@ package controller;
 import bo.BoFactory;
 import bo.ItemBo;
 import com.jfoenix.controls.JFXButton;
-import dao.custom.ItemDao;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.ItemDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import tm.ItemTm;
+import tm.OrderTm;
 import util.BoType;
 
 import java.io.IOException;
@@ -30,9 +37,18 @@ public class ItemCatelogController {
     public BorderPane pane;
     public GridPane itemGrid;
     public ScrollPane gridPane;
+    public TreeTableColumn colItemName;
+    public TreeTableColumn colQty;
+    public TreeTableColumn colOption;
+    public Label lblTotal;
+    public JFXTreeTableView orderTable;
+    public TreeTableColumn colAmount;
+    public JFXButton reloadBtn;
 
     private List<ItemDto> itemList;
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    private static double total=0;
+    private static ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
 
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
@@ -69,7 +85,13 @@ public class ItemCatelogController {
                 throw new RuntimeException(e);
             }
 
+
+
         }
+        colItemName.setCellValueFactory(new TreeItemPropertyValueFactory<>("itemName"));
+        colQty.setCellValueFactory(new TreeItemPropertyValueFactory<>("qty"));
+        colAmount.setCellValueFactory(new TreeItemPropertyValueFactory<>("amount"));
+        colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("deleteBtn"));
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
@@ -79,16 +101,38 @@ public class ItemCatelogController {
         stage.setTitle("User Dashboard");
         stage.centerOnScreen();
     }
+    private void setTotal(){
+        lblTotal.setText(String.valueOf(total));
+        System.out.println(total);
+    }
 
     public void addToCart(ItemDto dto,int qty){
-        ObservableList<ItemTm> tmList = FXCollections.observableArrayList();
-        JFXButton deleteBtn = new JFXButton("Delete");
-        tmList.add(new ItemTm(
+        JFXButton btn = new JFXButton("Delete");
+        OrderTm orderTm = new OrderTm(
                 dto.getId(),
                 dto.getName(),
                 qty,
-                dto.getUnitPrice(),
-                deleteBtn
-        ));
+                dto.getUnitPrice()*qty,
+                btn
+        );
+
+        boolean isExist = false;
+        for (OrderTm tm: tmList) {
+            if (tm.getId().equals(dto.getId())){
+                isExist=true;
+
+            }
+        }
+        tmList.add(orderTm);
+        System.out.println(tmList);
+        System.out.println(tmList.size());
+
+    }
+
+    public void ReloadBtnOnAction(ActionEvent actionEvent) {
+//        lblTotal.setText(String.valueOf(total));
+//        TreeItem<OrderTm> treeObject = new RecursiveTreeItem<OrderTm>(tmList, RecursiveTreeObject::getChildren);
+//        orderTable.setRoot(treeObject);
+//        orderTable.setShowRoot(false);
     }
 }
