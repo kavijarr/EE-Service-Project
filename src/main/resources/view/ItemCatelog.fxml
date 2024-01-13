@@ -203,7 +203,7 @@
                                     </Label>
                                  </children>
                               </GridPane>
-                              <JFXButton style="-fx-background-color: #19307B;" text="Checkout" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <JFXButton onAction="#CheckoutBtnOnAction" style="-fx-background-color: #19307B;" text="Checkout" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>

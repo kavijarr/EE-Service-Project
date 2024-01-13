@@ -1,7 +1,8 @@
 package controller;
 
 import bo.BoFactory;
-import bo.ItemBo;
+import bo.custom.ItemBo;
+import bo.custom.OrderBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -27,7 +28,6 @@ import util.BoType;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 public class ItemCatelogController {
 
@@ -46,8 +46,10 @@ public class ItemCatelogController {
 
     private List<ItemDto> itemList;
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
     private static double total=0;
     private static ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
+    //private static PlaceOrderFormController controller = new PlaceOrderFormController();
 
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
@@ -66,7 +68,7 @@ public class ItemCatelogController {
 
                 ItemController itemController = fxmlLoader.getController();
                 itemController.setData(itemList.get(i));
-                if (collumn==4){
+                if (collumn==3){
                     collumn=0;
                     row++;
                 }
@@ -141,5 +143,14 @@ public class ItemCatelogController {
 
     public void ReloadAction(MouseEvent mouseEvent) {
         reloadBtn.fire();
+    }
+
+    public void CheckoutBtnOnAction(ActionEvent actionEvent) throws IOException {
+        orderBo.setTmList(tmList);
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
+        stage.setTitle("Place Order");
+        stage.centerOnScreen();
+        stage.show();
     }
 }

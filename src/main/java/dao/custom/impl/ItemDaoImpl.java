@@ -45,6 +45,7 @@ public class ItemDaoImpl implements ItemDao {
         Session session = HibernateUtil.getSession();
         Query query = session.createQuery("FROM Item");
         List<Item> itemList = query.list();
+        session.close();
         return itemList;
     }
 

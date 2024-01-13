@@ -1,7 +1,8 @@
 package dao;
 
-import bo.impl.ItemBoImpl;
+import dao.custom.impl.CustomerDaoImpl;
 import dao.custom.impl.ItemDaoImpl;
+import dao.custom.impl.OrderDaoImpl;
 import util.DaoType;
 
 public class DaoFactory {
@@ -17,6 +18,8 @@ public class DaoFactory {
     public static <T extends SuperDao>T getDao(DaoType type){
         switch (type){
             case ITEM:return (T) new ItemDaoImpl();
+            case CUSTOMER:return (T) new CustomerDaoImpl();
+            case ORDER:return (T) new OrderDaoImpl();
         }
         return null;
     }

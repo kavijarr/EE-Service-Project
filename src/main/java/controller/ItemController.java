@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BoFactory;
-import bo.ItemBo;
+import bo.custom.ItemBo;
 import dto.ItemDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -11,11 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import util.BoType;
 
 import java.io.IOException;

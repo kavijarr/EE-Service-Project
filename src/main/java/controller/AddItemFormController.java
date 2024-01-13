@@ -1,17 +1,17 @@
 package controller;
 
 import bo.BoFactory;
-import bo.ItemBo;
+import bo.custom.ItemBo;
 import com.jfoenix.controls.JFXTextField;
-import dao.custom.ItemDao;
 import dto.ItemDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -32,6 +32,7 @@ public class AddItemFormController {
     public JFXTextField txtQty;
     public ComboBox cmbCategory;
     public ImageView viewImg;
+    public Label lblItemId;
     private String imgUrl;
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     private List<ItemDto> itemList;
@@ -40,6 +41,7 @@ public class AddItemFormController {
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
 
+        lblItemId.setText(itemBo.generateID());
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
@@ -72,6 +74,12 @@ public class AddItemFormController {
          imgUrl
         );
         System.out.println(dto);
-        itemBo.saveItem(dto);
+        Boolean isSaved = itemBo.saveItem(dto);
+
+        if (isSaved){
+            new Alert(Alert.AlertType.CONFIRMATION,"Item Succesfully Saved").show();
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Error").show();
+        }
     }
 }

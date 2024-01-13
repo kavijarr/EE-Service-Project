@@ -1,38 +1,30 @@
 
 p
-java:S1104"SMake itemImg a static final constant or non-public and provide accessors if needed.(ÚŸÎ×8”ğ¢òÏ1
+java:S1104"SMake itemImg a static final constant or non-public and provide accessors if needed.(ÚŸÎ×8”ğ¢òÏ1
 s
-java:S1104"WMake lblItemName a static final constant or non-public and provide accessors if needed.(¡šµ&8”ğ¢òÏ1
+java:S1104"WMake lblItemName a static final constant or non-public and provide accessors if needed.(¡šµ&8”ğ¢òÏ1
 z
-java:S1104"XMake lblItemPrice a static final constant or non-public and provide accessors if needed.(ó—·“úÿÿÿÿ8”ğ¢òÏ1
+java:S1104"XMake lblItemPrice a static final constant or non-public and provide accessors if needed.(ó—·“úÿÿÿÿ8”ğ¢òÏ1
 w
-java:S1104"UMake lblItemId a static final constant or non-public and provide accessors if needed.(Úßòùÿÿÿÿ8”ğ¢òÏ1
+java:S1104"UMake lblItemId a static final constant or non-public and provide accessors if needed.(Úßòùÿÿÿÿ8”ğ¢òÏ1
 m
-java:S1104"PMake pane a static final constant or non-public and provide accessors if needed.(ç¢ıã8”ğ¢òÏ1
+java:S1104"PMake pane a static final constant or non-public and provide accessors if needed.(ç¢ıã8”ğ¢òÏ1
 t
-java:S1104"RMake lblQty a static final constant or non-public and provide accessors if needed.(²´ºëúÿÿÿÿ8”ğ¢òÏ1
+java:S1104"RMake lblQty a static final constant or non-public and provide accessors if needed.(²´ºëúÿÿÿÿ8”ğ¢òÏ1
 u
-java:S1450"SRemove the "item" field and declare it as a local variable in the relevant methods.(á¦óˆøÿÿÿÿ8²ğ¢òÏ1
+java:S1450"SRemove the "item" field and declare it as a local variable in the relevant methods.(á¦óˆøÿÿÿÿ8²ğ¢òÏ1
 W
-java:S2209 "5Change this instance-reference to a static reference.(ÎŠ±®úÿÿÿÿ8³ğ¢òÏ1
-j	java:S100$"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ˜øá8ºğ¢òÏ1
+java:S2209"5Change this instance-reference to a static reference.(ÎŠ±®úÿÿÿÿ8³ğ¢òÏ1
+j	java:S100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ˜øá8ºğ¢òÏ1
 O
-java:S1172$"2Remove this unused method parameter "actionEvent".(Ñ˜øá8»ğ¢òÏ1
-o	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ¯º˜øÿÿÿÿ8¼ğ¢òÏ1
+java:S1172 "2Remove this unused method parameter "actionEvent".(Ñ˜øá8»ğ¢òÏ1
+o	java:S100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ¯º˜øÿÿÿÿ8¼ğ¢òÏ1
 T
-java:S1172+"2Remove this unused method parameter "actionEvent".(ñ¯º˜øÿÿÿÿ8¼ğ¢òÏ1
-L	java:S1067"+Replace this use of System.out by a logger.(£ç¹Òùÿÿÿÿ8Åğ¢òÏ1
-o	java:S100B"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ·õÙüÿÿÿÿ8Êğ¢òÏ1
+java:S1172'"2Remove this unused method parameter "actionEvent".(ñ¯º˜øÿÿÿÿ8¼ğ¢òÏ1
+L	java:S1063"+Replace this use of System.out by a logger.(£ç¹Òùÿÿÿÿ8Åğ¢òÏ1
+o	java:S100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ·õÙüÿÿÿÿ8Êğ¢òÏ1
 T
-java:S1172B"2Remove this unused method parameter "actionEvent".(æ·õÙüÿÿÿÿ8Ëğ¢òÏ1
-o	java:S100I"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú›ğ¢ÿÿÿÿÿ8Ëğ¢òÏ1
+java:S1172>"2Remove this unused method parameter "actionEvent".(æ·õÙüÿÿÿÿ8Ëğ¢òÏ1
+o	java:S100E"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú›ğ¢ÿÿÿÿÿ8Ëğ¢òÏ1
 T
-java:S1172I"2Remove this unused method parameter "actionEvent".(Ú›ğ¢ÿÿÿÿÿ8Ëğ¢òÏ1
-]
-java:S1128";Remove this unused import 'javafx.scene.layout.BorderPane'.(Îî¥üÿÿÿÿ8Ìğ¢òÏ1
-T
-java:S1128"2Remove this unused import 'javafx.stage.Modality'.(£†üĞüÿÿÿÿ8Ìğ¢òÏ1
-Q
-java:S1128"/Remove this unused import 'javafx.stage.Popup'.(›Ü…Èÿÿÿÿÿ8Ìğ¢òÏ1
-R
-java:S1128"0Remove this unused import 'javafx.stage.Window'.(Ñ€Ş‡øÿÿÿÿ8Ìğ¢òÏ1
+java:S1172E"2Remove this unused method parameter "actionEvent".(Ú›ğ¢ÿÿÿÿÿ8Ëğ¢òÏ1

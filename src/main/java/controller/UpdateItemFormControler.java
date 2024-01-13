@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BoFactory;
-import bo.ItemBo;
+import bo.custom.ItemBo;
 import com.jfoenix.controls.JFXTextField;
 import dto.ItemDto;
 import javafx.event.ActionEvent;
@@ -11,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;

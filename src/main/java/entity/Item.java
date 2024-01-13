@@ -7,7 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -22,6 +25,9 @@ public class Item {
     private int qtyOnHand;
     private double unitPrice;
     private String imgUrl;
+
+    @OneToMany(mappedBy = "item")
+    List<OrderDetails> orderDetailsList = new ArrayList<>();
 
     public Item(String id, String name, int qtyOnHand, double unitPrice, String imgUrl) {
         this.id = id;
