@@ -53,4 +53,18 @@ public class CustomerDaoImpl implements CustomerDao {
         session.close();
         return null;
     }
+
+    @Override
+    public Customer getCustomer(String id) {
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM Customer WHERE id = :value");
+        query.setParameter("value",id);
+        query.setMaxResults(1);
+        List list = query.list();
+        if (!list.isEmpty()){
+            Customer customer = (Customer) list.get(0);
+            return customer;
+        }
+        return null;
+    }
 }

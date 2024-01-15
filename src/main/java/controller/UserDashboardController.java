@@ -38,7 +38,12 @@ public class UserDashboardController {
     public void ServiceBtnOnAction(ActionEvent actionEvent) {
     }
 
-    public void OrdersBtnOnAction(ActionEvent actionEvent) {
+    public void OrdersBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ViewOrdersForm.fxml"))));
+        stage.show();
+        stage.setTitle("Orders");
+        stage.centerOnScreen();
     }
 
     public void ReportsBtnOnAction(ActionEvent actionEvent) {

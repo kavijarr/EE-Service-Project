@@ -13,4 +13,6 @@ public interface OrderBo extends SuperBo {
     ObservableList<OrderTm> getTmList();
     String generateId();
     boolean saveOrder(OrderDto dto);
+
+    List<OrderDto> getAll();
 }

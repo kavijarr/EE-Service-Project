@@ -12,4 +12,6 @@ public interface CustomerBo extends SuperBo {
     boolean deleteCustomer(CustomerDto dto);
     List<CustomerDto> getAll();
     String generateId();
+
+    CustomerDto getCustomer(String id);
 }

@@ -50,7 +50,7 @@ public class PlaceOrderFormController {
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     private List<CustomerDto> customers = new ArrayList<>();
     private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
-    private static ObservableList<OrderTm> tmList;
+    private ObservableList<OrderTm> tmList;
     private double total=0;
 
     public  void initialize(){
@@ -133,6 +133,7 @@ public class PlaceOrderFormController {
 
                 if (isSaved){
                     new Alert(Alert.AlertType.CONFIRMATION,"Order Succesfully Saved!").show();
+                    orderBo.setTmList(null);
                 }else{
                     new Alert(Alert.AlertType.ERROR,"Error").show();
                 }

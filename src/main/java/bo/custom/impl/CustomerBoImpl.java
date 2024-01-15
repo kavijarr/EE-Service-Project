@@ -61,4 +61,15 @@ public class CustomerBoImpl implements CustomerBo {
             return ("C001");
         }
     }
+
+    @Override
+    public CustomerDto getCustomer(String id) {
+        Customer entity = customerDao.getCustomer(id);
+        return new CustomerDto(
+                entity.getId(),
+                entity.getCustomerName(),
+                entity.getCustomerEmail(),
+                entity.getContactNumber()
+        );
+    }
 }

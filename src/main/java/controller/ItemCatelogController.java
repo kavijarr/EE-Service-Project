@@ -152,6 +152,8 @@ public class ItemCatelogController {
         stage.setTitle("Place Order");
         stage.centerOnScreen();
         stage.show();
+        tmList=FXCollections.observableArrayList();
+        total=0.00;
     }
 
     private void loadItems(){

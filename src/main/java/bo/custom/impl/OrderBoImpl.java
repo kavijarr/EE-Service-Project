@@ -11,6 +11,8 @@ import javafx.collections.ObservableList;
 import tm.OrderTm;
 import util.DaoType;
 
+import java.util.List;
+
 
 public class OrderBoImpl implements OrderBo {
     private static ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
@@ -38,7 +40,13 @@ public class OrderBoImpl implements OrderBo {
         return orderDao.save(dto);
     }
 
-    public void setTmList(ObservableList<OrderTm> tmList) {
-        this.tmList = tmList;
+    @Override
+    public List<OrderDto> getAll() {
+        return orderDao.getAll();
+    }
+
+    public void setTmList(ObservableList<OrderTm> list) {
+        this.tmList = list;
+        System.out.println(tmList);
     }
 }

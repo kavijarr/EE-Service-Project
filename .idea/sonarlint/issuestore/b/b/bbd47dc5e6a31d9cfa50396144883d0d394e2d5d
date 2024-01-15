@@ -1,5 +1,5 @@
 
-h	java:S112¹"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8§ àĞ1
+h	java:S112»"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8§ àĞ1
 Q
 java:S3740'"/Provide the parametrized type for this generic.(ŠÄÌûÿÿÿÿ8ó©˜àĞ1
 L
@@ -37,9 +37,9 @@ java:S1104-"UMake reloadBtn a static final constant or non-public and provide a
 s
 java:S1450/"WRemove the "itemList" field and declare it as a local variable in the relevant methods.(şİùv8İ àĞ1
 W
-java:S22090"5Change this instance-reference to a static reference.(ÎŠ±®úÿÿÿÿ8ıö¦àĞ1
+java:S22090"5Change this instance-reference to a static reference.(ÎŠ±®úÿÿÿÿ8†¡¯çĞ1
 W
-java:S22091"5Change this instance-reference to a static reference.(Ñ«óıÿÿÿÿ8şö¦àĞ1
+java:S22091"5Change this instance-reference to a static reference.(Ñ«óıÿÿÿÿ8†¡¯çĞ1
 X	java:S1254"<This block of commented-out lines of code should be removed.(èß‚¨8°ª˜àĞ1
 X	java:S125:"<This block of commented-out lines of code should be removed.(’Ã€ğ8ó¤ŸàĞ1
 j	java:S100b"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÇ’²8µª˜àĞ1
@@ -62,7 +62,11 @@ java:S1172"1Remove this unused method parameter "mouseEvent".(ÈÀäÖşÿÿÿÿ8Áª˜à
 p	java:S100”"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨«‹´şÿÿÿÿ8Áª˜àĞ1
 U
 java:S1172”"2Remove this unused method parameter "actionEvent".(¨«‹´şÿÿÿÿ8Ãª˜àĞ1
+Y
+java:S2696›"6Make the enclosing method "static" or remove this set.(ûîâÆùÿÿÿÿ8ŸÃ±çĞ1
+T
+java:S2696œ"6Make the enclosing method "static" or remove this set.(Îò¿¶8¾¶´çĞ1
 M
-java:S1128"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8¨÷¦àĞ1
+java:S1128"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8©ö³çĞ1
 J
 java:S1144i"-Remove this unused private "setTotal" method.(ŠÿÆÏ8Ìª˜àĞ1

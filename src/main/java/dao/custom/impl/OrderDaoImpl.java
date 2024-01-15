@@ -38,6 +38,24 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
+    public List<OrderDetailsDto> getOrderDetails(String id) {
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM OrderDetails WHERE orderId = :findId");
+        query.setParameter("findId",id);
+        List<OrderDetails> list = query.list();
+        List<OrderDetailsDto> dtoList = new ArrayList<>();
+        for (OrderDetails entity:list) {
+            dtoList.add(new OrderDetailsDto(
+                    entity.getOrder().getOrderId(),
+                    entity.getItem().getId(),
+                    entity.getQty(),
+                    entity.getUnitPrice()
+            ));
+        }
+        return dtoList;
+    }
+
+    @Override
     public Boolean save(OrderDto dto) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
@@ -83,6 +101,20 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<OrderDto> getAll() {
-        return null;
+        List<OrderDto> dtoList = new ArrayList<>();
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM Orders");
+        List<Orders> list = query.list();
+        for (Orders entity:list) {
+            dtoList.add(new OrderDto(
+                    entity.getOrderId(),
+                    entity.getDate(),
+                    entity.getCustomer().getId(),
+                    getOrderDetails(entity.getOrderId())
+            ));
+        }
+        return dtoList;
     }
+
+
 }
