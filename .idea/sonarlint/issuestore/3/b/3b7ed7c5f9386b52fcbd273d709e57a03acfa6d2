@@ -1,0 +1,14 @@
+
+R
+java:S2209"5Change this instance-reference to a static reference.(¤«¹Æ8­à™¢Ğ1
+W
+java:S6397"5Replace this character class by the character itself.(…û‰ûÿÿÿÿ8­à™¢Ğ1
+X
+java:S26961"6Make the enclosing method "static" or remove this set.(‘«¥”ùÿÿÿÿ8¯à™¢Ğ1
+W
+java:S22091"5Change this instance-reference to a static reference.(‘«¥”ùÿÿÿÿ8¯à™¢Ğ1
+L	java:S1062"+Replace this use of System.out by a logger.(¸à¡×ÿÿÿÿÿ8Ş·›çĞ1
+E
+java:S1128"(Remove this unused import 'entity.Item'.(ÏÂã8Úß‰çĞ1
+G
+java:S1128"*Remove this unused import 'entity.Orders'.(Û°ö¦8Úß‰çĞ1
