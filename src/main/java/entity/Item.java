@@ -25,15 +25,27 @@ public class Item {
     private int qtyOnHand;
     private double unitPrice;
     private String imgUrl;
+    private Boolean isDisabled;
 
     @OneToMany(mappedBy = "item")
     List<OrderDetails> orderDetailsList = new ArrayList<>();
 
-    public Item(String id, String name, int qtyOnHand, double unitPrice, String imgUrl) {
+//    public Item(String id, String name, int qtyOnHand, double unitPrice, String imgUrl,Boolean isDisabled) {
+//        this.id = id;
+//        this.name = name;
+//        this.qtyOnHand = qtyOnHand;
+//        this.unitPrice = unitPrice;
+//        this.imgUrl = imgUrl;
+//        this.isDisabled = isDisabled;
+//    }
+
+
+    public Item(String id, String name, int qtyOnHand, double unitPrice, String imgUrl, Boolean isDisabled) {
         this.id = id;
         this.name = name;
         this.qtyOnHand = qtyOnHand;
         this.unitPrice = unitPrice;
         this.imgUrl = imgUrl;
+        this.isDisabled = isDisabled;
     }
 }

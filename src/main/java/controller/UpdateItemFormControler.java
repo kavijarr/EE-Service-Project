@@ -48,7 +48,8 @@ public class UpdateItemFormControler {
                 txtItemName.getText(),
                 Integer.parseInt(txtQty.getText()),
                 Double.parseDouble(txtPrice.getText()),
-                item.getImgUrl()
+                item.getImgUrl(),
+                true
         );
         Boolean isUpdated = itemBo.updateItem(dto);
         if (isUpdated==true){

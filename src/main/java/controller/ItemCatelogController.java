@@ -55,40 +55,40 @@ public class ItemCatelogController {
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
 
-        itemList = itemBo.getAll();
-        int collumn =0;
-        int row =1;
-
-        itemList = itemBo.getAll();
-        for(int i=0;i<itemList.size();i++){
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/view/Item.fxml"));
-            try {
-                AnchorPane anchorPane = fxmlLoader.load();
-
-                ItemController itemController = fxmlLoader.getController();
-                itemController.setData(itemList.get(i));
-                if (collumn==3){
-                    collumn=0;
-                    row++;
-                }
-                itemGrid.add(anchorPane,collumn++,row);
-                GridPane.setMargin(anchorPane,new Insets(10));
-                itemGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
-                itemGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                itemGrid.setMaxWidth(Region.USE_COMPUTED_SIZE);
-
-                itemGrid.setMinHeight(Region.USE_COMPUTED_SIZE);
-                itemGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                itemGrid.setMaxHeight(Region.USE_COMPUTED_SIZE);
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-
-
-        }
+//        itemList = itemBo.getEnabled();
+//        int collumn =0;
+//        int row =1;
+//
+//        for(int i=0;i<itemList.size();i++){
+//            FXMLLoader fxmlLoader = new FXMLLoader();
+//            fxmlLoader.setLocation(getClass().getResource("/view/Item.fxml"));
+//            try {
+//                AnchorPane anchorPane = fxmlLoader.load();
+//
+//                ItemController itemController = fxmlLoader.getController();
+//                itemController.setData(itemList.get(i));
+//                if (collumn==3){
+//                    collumn=0;
+//                    row++;
+//                }
+//                itemGrid.add(anchorPane,collumn++,row);
+//                GridPane.setMargin(anchorPane,new Insets(10));
+//                itemGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
+//                itemGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+//                itemGrid.setMaxWidth(Region.USE_COMPUTED_SIZE);
+//
+//                itemGrid.setMinHeight(Region.USE_COMPUTED_SIZE);
+//                itemGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+//                itemGrid.setMaxHeight(Region.USE_COMPUTED_SIZE);
+//
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//
+//
+//
+//        }
+        loadItems();
         colItemName.setCellValueFactory(new TreeItemPropertyValueFactory<>("itemName"));
         colQty.setCellValueFactory(new TreeItemPropertyValueFactory<>("qty"));
         colAmount.setCellValueFactory(new TreeItemPropertyValueFactory<>("amount"));
@@ -152,5 +152,41 @@ public class ItemCatelogController {
         stage.setTitle("Place Order");
         stage.centerOnScreen();
         stage.show();
+    }
+
+    private void loadItems(){
+        itemList = itemBo.getEnabled();
+        int collumn =0;
+        int row =1;
+
+        for(int i=0;i<itemList.size();i++){
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/view/Item.fxml"));
+            try {
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(itemList.get(i));
+                if (collumn==3){
+                    collumn=0;
+                    row++;
+                }
+                itemGrid.add(anchorPane,collumn++,row);
+                GridPane.setMargin(anchorPane,new Insets(10));
+                itemGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                itemGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                itemGrid.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                itemGrid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                itemGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                itemGrid.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+
+        }
     }
 }

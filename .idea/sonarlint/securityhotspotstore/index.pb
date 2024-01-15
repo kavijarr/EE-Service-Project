@@ -31,12 +31,8 @@ U
 %src/main/java/dao/custom/ItemDao.java,4\b\4bc94e0768f2b44d586ee83f6d1609486caf9763
 ^
 .src/main/java/dao/custom/impl/ItemDaoImpl.java,8\3\832ef00009df4387fac65fd9ca278fb02a8ef5fb
-L
-src/main/java/bo/ItemBo.java,c\e\cec46f9715e16a29d2536065d46a349fcfc4b1a6
 M
 src/main/java/bo/SuperBo.java,6\9\69fab5e928f2a1d545d917bdc79a71b4a4e756b3
-U
-%src/main/java/bo/impl/ItemBoImpl.java,3\b\3bab84b4217508336f18bb1a17645e283baaafa1
 O
 src/main/java/bo/BoFactory.java,8\7\87f10d9337d52368b8fe3186fdb076fdfef9fdb2
 N
@@ -83,8 +79,6 @@ Q.idea/sonarlint/securityhotspotstore/8/3/832ef00009df4387fac65fd9ca278fb02a8ef5
 Q.idea/sonarlint/securityhotspotstore/f/9/f918a504a06f3c81f0f133ae2094633652ce8935,2\c\2c3740c8f1c5bab69bdc79383abda08f8ea8d276
 w
 G.idea/sonarlint/issuestore/7/8/78e787272942dea7f82a659182496bc242d14ac9,d\f\df71d3d1b712068de1b181aa9ef5009c84fadace
-Å
-Q.idea/sonarlint/securityhotspotstore/c/e/cec46f9715e16a29d2536065d46a349fcfc4b1a6,9\9\99c8ad673fdb2acc334c2289de906ee7f315748c
 w
 G.idea/sonarlint/issuestore/6/9/69fab5e928f2a1d545d917bdc79a71b4a4e756b3,6\c\6c9fe9979ca77cf4d465f6988d9a477bc325cec1
 Å
@@ -93,8 +87,6 @@ Q.idea/sonarlint/securityhotspotstore/6/9/69fab5e928f2a1d545d917bdc79a71b4a4e756
 Q.idea/sonarlint/securityhotspotstore/d/4/d47780771e9b8080d7b72514c65faad4d96c5028,f\8\f8648841bc4ebd36498532c3a1d53b695b732b05
 Å
 Q.idea/sonarlint/securityhotspotstore/8/7/87f10d9337d52368b8fe3186fdb076fdfef9fdb2,1\0\10107dc7a9b6bbede628bccb5653d2c099421768
-Å
-Q.idea/sonarlint/securityhotspotstore/3/b/3bab84b4217508336f18bb1a17645e283baaafa1,f\9\f9e614ea6ce0cf67c60d834c4d73dd7fc405f4c6
 w
 G.idea/sonarlint/issuestore/c/3/c330f4b84387d399dda055a2e82c35f9c2bf8449,8\4\849fe045ec3c7e7fa7757fe7acdb8d94519b6f0e
 Å
@@ -259,8 +251,6 @@ S
 #src/main/java/bo/custom/ItemBo.java,5\5\550c2e395f13d384aec20a9ebca0bc483a9313ae
 Y
 )src/main/java/dao/custom/CustomerDao.java,7\9\79570cd3df0ee51e914cdca2f830d194613d93bc
-^
-.src/main/java/dao/custom/impl/CustomerDao.java,6\d\6d60215691939b40ba2d2c0ed6500e47fa74e11a
 b
 2src/main/java/dao/custom/impl/CustomerDaoImpl.java,0\8\087c42ce946eb8e5dcca01f8bbfc3f04bfcc2b4c
 T
@@ -275,3 +265,15 @@ V
 &src/main/java/dao/custom/OrderDao.java,0\8\0862556bde68ad47794fc754fd19e77b0f13b6d7
 _
 /src/main/java/dao/custom/impl/OrderDaoImpl.java,2\a\2a0f2887e69155c4ab17b9a6277638f1abc5cc15
+[
++src/main/java/bo/custom/OrderDetailsBo.java,4\9\497021ea6d5d163964988848408dc12beaed8aa0
+d
+4src/main/java/bo/custom/impl/OrderDetailsBoImpl.java,8\8\88a8de834924e254fc7a7c4120699646481b0cc3
+]
+-src/main/java/dao/custom/OrderDetailsDao.java,6\1\618ccafb113838f03b58553ca7e60903bdd2cead
+f
+6src/main/java/dao/custom/impl/OrderDetailsDaoImpl.java,6\8\68bf14efc52543139fcbff5e945d69e8ade6262d
+i
+9src/main/java/controller/ViewCustomersFormController.java,7\1\71da1443ab1a08f5b997b25ff0c45e5e6d03dd13
+P
+ src/main/java/tm/CustomerTm.java,0\3\03968baea78b070fbe5e6c2d0d287e6b03b454aa

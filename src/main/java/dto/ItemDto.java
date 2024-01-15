@@ -14,4 +14,5 @@ public class ItemDto {
     private int qtyOnHand;
     private double unitPrice;
     private String imgUrl;
+    private Boolean isDisabled;
 }

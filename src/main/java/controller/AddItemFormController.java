@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 
-public class AddItemFormController {
+public class  AddItemFormController {
     public Circle logo;
     public BorderPane pane;
     public JFXTextField txtItemName;
@@ -71,7 +71,8 @@ public class AddItemFormController {
          txtItemName.getText(),
          Integer.parseInt(txtQty.getText()),
          Double.parseDouble(txtPrice.getText()),
-         imgUrl
+         imgUrl,
+                true
         );
         System.out.println(dto);
         Boolean isSaved = itemBo.saveItem(dto);

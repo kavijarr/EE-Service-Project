@@ -1,5 +1,5 @@
 package util;
 
 public enum DaoType {
-    ITEM,CUSTOMER,ORDER
+    ITEM,CUSTOMER,ORDER,ORDERDETAILS
 }

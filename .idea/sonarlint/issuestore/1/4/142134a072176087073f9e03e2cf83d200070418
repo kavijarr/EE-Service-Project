@@ -21,5 +21,8 @@ j	java:S100,"NRename this method name to match the regular expression '^[a-z][
 o	java:S100/"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”š©Êøÿÿÿÿ8ÒÄ½ºÏ1
 T
 java:S1172/"2Remove this unused method parameter "actionEvent".(”š©Êøÿÿÿÿ8ÚÛáÄÏ1
+o	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯·êöøÿÿÿÿ8õÙÊàĞ1
+T
+java:S11727"2Remove this unused method parameter "actionEvent".(¯·êöøÿÿÿÿ8ˆ€ÏàĞ1
 B
 java:S1128"%Remove this unused import 'java.awt'.(ï´µ©8ÒÄ½ºÏ1

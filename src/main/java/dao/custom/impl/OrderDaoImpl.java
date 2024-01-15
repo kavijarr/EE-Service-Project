@@ -77,7 +77,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public Boolean delete(OrderDto dto) {
+    public Boolean delete(String value) {
         return null;
     }
 

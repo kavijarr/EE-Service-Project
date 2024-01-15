@@ -36,8 +36,15 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public Boolean delete(Item entity) {
-        return null;
+    public Boolean delete(String value) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Item item = session.find(Item.class, value);
+        item.setIsDisabled(false);
+        session.save(item);
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
@@ -69,5 +76,14 @@ public class ItemDaoImpl implements ItemDao {
         Item item = session.find(Item.class,id);
         session.close();
         return item;
+    }
+
+    @Override
+    public List<Item> getEnabledItems() {
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM Item WHERE isDisabled = true");
+        List<Item> itemList = query.list();
+        session.close();
+        return itemList;
     }
 }

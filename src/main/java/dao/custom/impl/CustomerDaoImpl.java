@@ -27,7 +27,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public Boolean delete(Customer entity) {
+    public Boolean delete(String value) {
         return null;
     }
 

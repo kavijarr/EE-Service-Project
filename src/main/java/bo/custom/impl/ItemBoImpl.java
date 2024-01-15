@@ -16,13 +16,20 @@ public class ItemBoImpl implements ItemBo {
     @Override
     public Boolean saveItem(ItemDto dto) {
         return itemDao.save(new Item(
+//                dto.getId(),
+//                dto.getName(),
+//                //dto.getCategory(),
+//                dto.getQtyOnHand(),
+//                dto.getUnitPrice(),
+//                dto.getImgUrl()),
+//                dto.getIsDisabled()
                 dto.getId(),
                 dto.getName(),
-                //dto.getCategory(),
                 dto.getQtyOnHand(),
                 dto.getUnitPrice(),
-                dto.getImgUrl())
-        );
+                dto.getImgUrl(),
+                dto.getIsDisabled()
+        ));
     }
 
     @Override
@@ -48,7 +55,25 @@ public class ItemBoImpl implements ItemBo {
                     entity.getName(),
                     entity.getQtyOnHand(),
                     entity.getUnitPrice(),
-                    entity.getImgUrl()
+                    entity.getImgUrl(),
+                    entity.getIsDisabled()
+            ));
+        }
+        return dtoList;
+    }
+
+    @Override
+    public List<ItemDto> getEnabled() {
+        List<Item> entityList = itemDao.getEnabledItems();
+        List<ItemDto> dtoList = new ArrayList<>();
+        for (Item entity:entityList) {
+            dtoList.add(new ItemDto(
+                    entity.getId(),
+                    entity.getName(),
+                    entity.getQtyOnHand(),
+                    entity.getUnitPrice(),
+                    entity.getImgUrl(),
+                    entity.getIsDisabled()
             ));
         }
         return dtoList;
@@ -62,7 +87,8 @@ public class ItemBoImpl implements ItemBo {
                 entity.getName(),
                 entity.getQtyOnHand(),
                 entity.getUnitPrice(),
-                entity.getImgUrl()
+                entity.getImgUrl(),
+                entity.getIsDisabled()
         );
     }
 
@@ -73,8 +99,14 @@ public class ItemBoImpl implements ItemBo {
                 dto.getName(),
                 dto.getQtyOnHand(),
                 dto.getUnitPrice(),
-                dto.getImgUrl()
+                dto.getImgUrl(),
+                dto.getIsDisabled()
                 );
         return itemDao.update(entity);
+    }
+
+    @Override
+    public Boolean deleteItem(String value) {
+        return itemDao.delete(value);
     }
 }

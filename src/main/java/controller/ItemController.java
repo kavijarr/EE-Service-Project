@@ -2,11 +2,13 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.ItemBo;
+import bo.custom.OrderDetailsBo;
 import dto.ItemDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +28,7 @@ public class ItemController {
 
     private ItemDto item;
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    private OrderDetailsBo orderDetailsBo = BoFactory.getInstance().getBo(BoType.ORDERDETAILS);
     private int qty = 0;
     private static ItemCatelogController controller = new ItemCatelogController();
 
@@ -69,5 +72,15 @@ public class ItemController {
     public void PlusBtnOnAction(ActionEvent actionEvent) {
         qty++;
         lblQty.setText(String.valueOf(qty));
+    }
+
+    public void DeleteBtnOnAction(ActionEvent actionEvent) {
+        Boolean isDeleted = itemBo.deleteItem(lblItemId.getText());
+
+        if (isDeleted){
+            new Alert(Alert.AlertType.CONFIRMATION,"Item Deleted Successfuly").show();
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Error").show();
+        }
     }
 }
