@@ -81,7 +81,7 @@ public class ViewOrdersFormController {
             JFXButton btn = new JFXButton("Details");
             btn.setOnAction(event -> {
                 try {
-                    btnAction(dto);
+                    btnActionOrders(dto);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -98,29 +98,17 @@ public class ViewOrdersFormController {
         tblOrders.setShowRoot(false);
     }
 
-    private JFXButton getBtn(OrderDto dto) throws IOException {
-        JFXButton btn = new JFXButton("Details");
-        btn.setOnAction(event ->
-                {
-                    try {
-                        btnAction(dto);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-        );
-        return btn;
-    }
-
-    private void btnAction(OrderDto dto) throws IOException {
+    private void btnActionOrders(OrderDto dto) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/OrderDetailForm.fxml"));
         Parent root = loader.load();
         OrderDetailFormController controller=loader.getController();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Order Details");
-        stage.centerOnScreen();
-        stage.show();
+        Stage stage = (Stage) pane.getScene().getWindow();
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.setTitle("Order Details");
+        newStage.centerOnScreen();
+        newStage.show();
+        stage.close();
         controller.setData(dto);
         System.out.println(dto);
     }

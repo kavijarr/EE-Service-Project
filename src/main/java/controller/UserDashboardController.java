@@ -35,7 +35,12 @@ public class UserDashboardController {
         stage.centerOnScreen();
     }
 
-    public void ServiceBtnOnAction(ActionEvent actionEvent) {
+    public void ServiceBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceServiceOrderForm.fxml"))));
+        stage.show();
+        stage.setTitle("Service");
+        stage.centerOnScreen();
     }
 
     public void OrdersBtnOnAction(ActionEvent actionEvent) throws IOException {

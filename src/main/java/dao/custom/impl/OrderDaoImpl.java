@@ -52,6 +52,7 @@ public class OrderDaoImpl implements OrderDao {
                     entity.getUnitPrice()
             ));
         }
+        session.close();
         return dtoList;
     }
 
