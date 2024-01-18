@@ -13,15 +13,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -32,6 +34,10 @@ import tm.RepairTm;
 import util.BoType;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,7 +141,7 @@ public class ViewOrdersFormController {
             tmList.add(new RepairTm(
                     dto.getRepairId(),
                     dto.getDate(),
-                    "Pending",
+                    getStatus(dto),
                     btn
             ));
         }
@@ -156,5 +162,30 @@ public class ViewOrdersFormController {
         newStage.show();
         controller.setData(dto);
         stage.close();
+    }
+
+    private Label getStatus(RepairDto dto){
+        Label label = new Label();
+        int status = dto.getStatus();
+        LocalDate currentDate = LocalDate.now();
+        String date = dto.getDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate orderDate = LocalDate.parse(date,formatter);
+        long days = ChronoUnit.DAYS.between(orderDate, currentDate);
+        if (status==0){
+            label.setText("Pending");
+            if (days>5){
+                label.setBackground(new Background(new BackgroundFill(Color.ORANGE, CornerRadii.EMPTY, Insets.EMPTY)));
+            }else if (days>10){
+                label.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+        }else if (status==1){
+            label.setText("Processing");
+            label.setBackground(new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+        }else if (status==2){
+            label.setText("Completed");
+            label.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+        }
+        return label;
     }
 }

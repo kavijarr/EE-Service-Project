@@ -14,13 +14,15 @@ public class RepairDto {
     private String customerId;
     private String itemName;
     private String desc;
+    private int status;
     private List<RepairDetailsDto> list;
 
-    public RepairDto(String repairId, String date, String customerId, String itemName, String desc) {
+    public RepairDto(String repairId, String date, String customerId, String itemName, String desc, int status) {
         this.repairId = repairId;
         this.date = date;
         this.customerId = customerId;
         this.itemName = itemName;
         this.desc = desc;
+        this.status=status;
     }
 }

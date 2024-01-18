@@ -593,3 +593,7 @@ N
 src/main/java/tm/RepairTm.java,b\e\bef6f6f6670c607b37ad4131c1e9bca2e237adf7
 M
 src/main/java/tm/PartsTm.java,5\9\59bc192ffd1015933beea59ce38a66734d54a3a9
+R
+"src/main/java/util/StatusType.java,5\b\5b670c490154fc1a0bf65788cccc826f6240b59a
+R
+"src/main/java/util/StatusInfo.java,e\e\eebafac17b162a1992db8903734f63dda881607d

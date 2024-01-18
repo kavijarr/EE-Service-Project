@@ -4,12 +4,13 @@ import bo.custom.RepairBo;
 import dao.DaoFactory;
 import dao.custom.CustomerDao;
 import dao.custom.Repairdao;
-import dto.OrderDto;
 import dto.RepairDetailsDto;
 import dto.RepairDto;
 import entity.Repair;
 import entity.RepairDetails;
 import util.DaoType;
+import util.StatusInfo;
+import util.StatusType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class RepairBoImpl implements RepairBo {
                 dto.getDate(),
                 dto.getItemName(),
                 dto.getDesc(),
+                StatusInfo.statusType(StatusType.PENDING),
                 customerDao.getCustomer(dto.getCustomerId())
         ));
     }
@@ -52,7 +54,8 @@ public class RepairBoImpl implements RepairBo {
                     entity.getDate(),
                     entity.getCustomer().getId(),
                     entity.getItemName(),
-                    entity.getDescription()
+                    entity.getDescription(),
+                    entity.getStatus()
             ));
         }
         return dtoList;

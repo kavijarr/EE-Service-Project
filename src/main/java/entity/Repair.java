@@ -19,6 +19,7 @@ public class Repair {
     private String date;
     private String itemName;
     private String description;
+    private int status;
 
     @ManyToOne
     @JoinColumn(name = "customerId")
@@ -27,11 +28,12 @@ public class Repair {
     @OneToMany(mappedBy = "repair", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<RepairDetails> list;
 
-    public Repair(String repairId, String date, String itemName, String description, Customer customer) {
+    public Repair(String repairId, String date, String itemName, String description, int status, Customer customer) {
         this.repairId = repairId;
         this.date = date;
         this.itemName = itemName;
         this.description = description;
+        this.status=status;
         this.customer = customer;
     }
 }

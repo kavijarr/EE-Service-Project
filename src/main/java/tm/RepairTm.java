@@ -2,6 +2,7 @@ package tm;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.scene.control.Label;
 import lombok.*;
 
 @AllArgsConstructor
@@ -12,6 +13,6 @@ import lombok.*;
 public class RepairTm extends RecursiveTreeObject<RepairTm> {
     private String id;
     private String date;
-    private String status;
+    private Label status;
     private JFXButton btn;
 }

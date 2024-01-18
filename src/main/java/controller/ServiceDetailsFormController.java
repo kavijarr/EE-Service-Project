@@ -5,22 +5,28 @@ import bo.custom.CustomerBo;
 import bo.custom.RepairBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.CustomerDto;
 import dto.RepairDetailsDto;
 import dto.RepairDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import tm.PartsTm;
 import util.BoType;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,22 +45,39 @@ public class ServiceDetailsFormController {
     public TreeTableColumn colOption;
     public Label lblTotal;
     public Circle logo;
+    public JFXTreeTableView tblParts;
+    public BorderPane pane;
     private RepairDto dto;
     private ObservableList<PartsTm> tmList = FXCollections.observableArrayList();
     private List<RepairDetailsDto> list = new ArrayList<>();
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     RepairBo repairBo = BoFactory.getInstance().getBo(BoType.REPAIR);
+    private double total;
 
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
+
+        colPartName.setCellValueFactory(new TreeItemPropertyValueFactory<>("partName"));
+        colPartCost.setCellValueFactory(new TreeItemPropertyValueFactory<>("partCost"));
+        colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
     }
 
-    public void BackBtnOnAction(ActionEvent actionEvent) {
+    public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ViewOrdersForm.fxml"))));
+        stage.show();
+        stage.setTitle("Orders");
+        stage.centerOnScreen();
     }
 
     public void CompleteOrderBtnOnAction(ActionEvent actionEvent) {
-        repairBo.saveDetails(list);
+        Boolean isComplete = repairBo.saveDetails(list);
+        if (isComplete){
+            new Alert(Alert.AlertType.CONFIRMATION,"Order Completed!").show();
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Error").show();
+        }
     }
 
     public void setData(RepairDto data){
@@ -66,16 +89,27 @@ public class ServiceDetailsFormController {
 
     public void AddPartBtnOnAction(ActionEvent actionEvent) {
         JFXButton btn = new JFXButton("Delete");
-        tmList.add(new PartsTm(
+        total+=Double.parseDouble(txtPartCost.getText());
+        PartsTm tm = new PartsTm(
                 txtPartName.getText(),
                 Double.parseDouble(txtPartCost.getText()),
-                btn
-        ));
-        list.add(new RepairDetailsDto(
+                btn);
+        RepairDetailsDto detailsDto = new RepairDetailsDto(
                 txtPartName.getText(),
                 Double.parseDouble(txtPartCost.getText()),
                 dto.getRepairId()
-        ));
+        );
+        btn.setOnAction(actionEvent1 -> {
+            tmList.remove(tm);
+            list.remove(detailsDto);
+        });
+        tmList.add(tm);
+        list.add(detailsDto);
+
+        TreeItem<PartsTm> treeObject = new RecursiveTreeItem<PartsTm>(tmList, RecursiveTreeObject::getChildren);
+        tblParts.setRoot(treeObject);
+        tblParts.setShowRoot(false);
+        lblTotal.setText(String.valueOf(total));
     }
 
     private void loadCustomer(){

@@ -21,6 +21,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import util.BoType;
+import util.StatusInfo;
+import util.StatusType;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -86,7 +88,8 @@ public class PlaceServiceOrderFormController {
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                 lblCustomerId.getText(),
                 txtItemName.getText(),
-                txtDesc.getText()
+                txtDesc.getText(),
+                StatusInfo.statusType(StatusType.PENDING)
         );
         Boolean isSaved = repairBo.saveRepair(dto);
         if (isSaved){
