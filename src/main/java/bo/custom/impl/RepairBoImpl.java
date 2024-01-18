@@ -78,4 +78,29 @@ public class RepairBoImpl implements RepairBo {
     public boolean updateStatus(StatusType type, String repairId) {
         return repairdao.updateStatus(type, repairId);
     }
+
+    @Override
+    public RepairDto getRepair(String id) {
+        Repair repair = repairdao.getRepair(id);
+        List<RepairDetails> list = repair.getList();
+        List<RepairDetailsDto> dtoList=new ArrayList<>();
+        for (RepairDetails entity: list) {
+            dtoList.add(new RepairDetailsDto(
+                    entity.getPartName(),
+                    entity.getPrice(),
+                    entity.getRepair().getRepairId()
+            ));
+        }
+        RepairDto repairDto = new RepairDto(
+                repair.getRepairId(),
+                repair.getDate(),
+                repair.getCustomer().getId(),
+                repair.getItemName(),
+                repair.getDescription(),
+                repair.getStatus()
+        );
+        repairDto.setList(dtoList);
+        return repairDto;
+    }
+
 }

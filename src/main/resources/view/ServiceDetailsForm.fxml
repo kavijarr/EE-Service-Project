@@ -209,7 +209,7 @@
                               <JFXTextField fx:id="txtPartCost" layoutX="20.0" layoutY="28.0" style="-fx-background-color: WHITE;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Label layoutX="264.0" layoutY="12.0" text="Update Status" GridPane.columnIndex="4" />
                               <ComboBox fx:id="cmbStatus" prefWidth="150.0" style="-fx-background-color: WHITE;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                              <JFXButton onAction="#AddPartBtnOnAction" style="-fx-background-color: #19307B;" text="Add Part" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <JFXButton fx:id="addPartBtn" onAction="#AddPartBtnOnAction" style="-fx-background-color: #19307B;" text="Add Part" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -273,7 +273,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#CompleteOrderBtnOnAction" style="-fx-background-color: #19307B;" text="Complete Order" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <JFXButton fx:id="completeOrderBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#CompleteOrderBtnOnAction" style="-fx-background-color: #19307B;" text="Complete Order" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font>
@@ -292,7 +292,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <JFXButton maxWidth="1.7976931348623157E308" onAction="#UpdateBtnOnAction" style="-fx-background-color: #19307B;" text="Update" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <JFXButton fx:id="updateBtn" maxWidth="1.7976931348623157E308" onAction="#UpdateBtnOnAction" style="-fx-background-color: #19307B;" text="Update" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font>

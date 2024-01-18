@@ -50,6 +50,9 @@ public class ServiceDetailsFormController {
     public Circle logo;
     public JFXTreeTableView tblParts;
     public BorderPane pane;
+    public JFXButton completeOrderBtn;
+    public JFXButton updateBtn;
+    public JFXButton addPartBtn;
     private RepairDto dto;
     private ObservableList<PartsTm> tmList = FXCollections.observableArrayList();
     private List<RepairDetailsDto> list = new ArrayList<>();
@@ -60,6 +63,7 @@ public class ServiceDetailsFormController {
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
+        txtDesc.setDisable(true);
 
         colPartName.setCellValueFactory(new TreeItemPropertyValueFactory<>("partName"));
         colPartCost.setCellValueFactory(new TreeItemPropertyValueFactory<>("partCost"));
@@ -83,6 +87,7 @@ public class ServiceDetailsFormController {
         Boolean isComplete = repairBo.saveDetails(list);
         if (isComplete){
             new Alert(Alert.AlertType.CONFIRMATION,"Order Completed!").show();
+            updateStatus("Completed");
         }else {
             new Alert(Alert.AlertType.ERROR,"Error").show();
         }
@@ -93,6 +98,15 @@ public class ServiceDetailsFormController {
         loadCustomer();
         lblItemName.setText(dto.getItemName());
         txtDesc.setText(data.getDesc());
+        if (dto.getStatus()==StatusInfo.statusType(StatusType.COMPLETED)){
+            completeOrderBtn.setDisable(true);
+            addPartBtn.setDisable(true);
+            updateBtn.setDisable(true);
+            txtPartName.setDisable(true);
+            txtPartCost.setDisable(true);
+            RepairDto repair = repairBo.getRepair(dto.getRepairId());
+            loadParts(repair);
+        }
     }
 
     public void AddPartBtnOnAction(ActionEvent actionEvent) {
@@ -142,11 +156,32 @@ public class ServiceDetailsFormController {
 
     private void updateStatus(String status){
         switch (status){
-            case "Processing" : repairBo.updateStatus(StatusType.PROCESSING,dto.getRepairId());
+            case "Processing" : repairBo.updateStatus(StatusType.PROCESSING,dto.getRepairId());break;
+            case "Completed" : repairBo.updateStatus(StatusType.COMPLETED,dto.getRepairId());break;
         }
     }
 
     public void UpdateBtnOnAction(ActionEvent actionEvent) {
         updateStatus(cmbStatus.getValue().toString());
+    }
+
+    private void loadParts(RepairDto data){
+        List<RepairDetailsDto> list1 = data.getList();
+        ObservableList<PartsTm> partList = FXCollections.observableArrayList();
+        for (RepairDetailsDto detailsDto:list1) {
+            total+=detailsDto.getPrice();
+            JFXButton btn = new JFXButton("Delete");
+            btn.setDisable(true);
+            partList.add(new PartsTm(
+                    detailsDto.getPartName(),
+                    detailsDto.getPrice(),
+                    btn
+                    )
+            );
+        }
+        TreeItem<PartsTm> treeObject = new RecursiveTreeItem<PartsTm>(partList, RecursiveTreeObject::getChildren);
+        tblParts.setRoot(treeObject);
+        tblParts.setShowRoot(false);
+        lblTotal.setText(String.valueOf(total));
     }
 }

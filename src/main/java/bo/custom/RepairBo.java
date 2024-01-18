@@ -16,4 +16,5 @@ public interface RepairBo extends SuperBo {
     Boolean saveDetails(List<RepairDetailsDto> list);
 
     boolean updateStatus(StatusType type, String repairId);
+    RepairDto getRepair(String id);
 }
