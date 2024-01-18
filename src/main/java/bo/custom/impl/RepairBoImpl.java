@@ -73,4 +73,9 @@ public class RepairBoImpl implements RepairBo {
         }
         return repairdao.saveDetails(entityList);
     }
+
+    @Override
+    public boolean updateStatus(StatusType type, String repairId) {
+        return repairdao.updateStatus(type, repairId);
+    }
 }

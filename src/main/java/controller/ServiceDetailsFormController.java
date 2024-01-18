@@ -11,6 +11,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.CustomerDto;
 import dto.RepairDetailsDto;
 import dto.RepairDto;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +26,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import tm.PartsTm;
 import util.BoType;
+import util.StatusInfo;
+import util.StatusType;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,6 +64,11 @@ public class ServiceDetailsFormController {
         colPartName.setCellValueFactory(new TreeItemPropertyValueFactory<>("partName"));
         colPartCost.setCellValueFactory(new TreeItemPropertyValueFactory<>("partCost"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
+
+        Platform.runLater(()->{
+            populateCmbStatus();
+        });
+
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
@@ -117,5 +125,28 @@ public class ServiceDetailsFormController {
         lblCustomerName.setText(customer.getCustomerName());
         lblNumber.setText(customer.getContactNumber());
         lblEmail.setText(customer.getCustomerEmail());
+    }
+
+    private void populateCmbStatus(){
+        if(dto.getStatus()== StatusInfo.statusType(StatusType.PENDING)){
+            cmbStatus.setItems(
+                    FXCollections.observableArrayList("Processing")
+            );
+        } else if (dto.getStatus() == StatusInfo.statusType(StatusType.PROCESSING)) {
+            cmbStatus.setValue(
+                    FXCollections.observableArrayList("Processing")
+            );
+            cmbStatus.setDisable(true);
+        }
+    }
+
+    private void updateStatus(String status){
+        switch (status){
+            case "Processing" : repairBo.updateStatus(StatusType.PROCESSING,dto.getRepairId());
+        }
+    }
+
+    public void UpdateBtnOnAction(ActionEvent actionEvent) {
+        updateStatus(cmbStatus.getValue().toString());
     }
 }

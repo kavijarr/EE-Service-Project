@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
+import util.StatusInfo;
+import util.StatusType;
 
 import java.util.List;
 
@@ -24,7 +26,14 @@ public class RepairDaoImpl implements Repairdao {
 
     @Override
     public Boolean update(Repair entity) {
-        return null;
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Repair repair = session.find(Repair.class, entity.getRepairId());
+        repair.setStatus(entity.getStatus());
+        session.save(repair);
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
@@ -74,5 +83,17 @@ public class RepairDaoImpl implements Repairdao {
         Repair repair = session.find(Repair.class, id);
         session.close();
         return repair;
+    }
+
+    @Override
+    public Boolean updateStatus(StatusType type, String repairId) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Repair repair = session.find(Repair.class, repairId);
+        repair.setStatus(StatusInfo.statusType(type));
+        session.save(repair);
+        transaction.commit();
+        session.close();
+        return true;
     }
 }
