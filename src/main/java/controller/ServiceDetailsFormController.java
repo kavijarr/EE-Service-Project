@@ -101,7 +101,14 @@ public class ServiceDetailsFormController {
         if (dto.getStatus()==StatusInfo.statusType(StatusType.COMPLETED)){
             completeOrderBtn.setDisable(true);
             addPartBtn.setDisable(true);
+            txtPartName.setDisable(true);
+            txtPartCost.setDisable(true);
+            RepairDto repair = repairBo.getRepair(dto.getRepairId());
+            loadParts(repair);
+        } else if (dto.getStatus() == StatusInfo.statusType(StatusType.CLOSED)) {
+            completeOrderBtn.setDisable(true);
             updateBtn.setDisable(true);
+            addPartBtn.setDisable(true);
             txtPartName.setDisable(true);
             txtPartCost.setDisable(true);
             RepairDto repair = repairBo.getRepair(dto.getRepairId());
@@ -151,6 +158,16 @@ public class ServiceDetailsFormController {
                     FXCollections.observableArrayList("Processing")
             );
             cmbStatus.setDisable(true);
+        } else if (dto.getStatus() == StatusInfo.statusType(StatusType.COMPLETED)) {
+            cmbStatus.setItems(
+                    FXCollections.observableArrayList("Closed")
+            );
+        } else if (dto.getStatus() == StatusInfo.statusType(StatusType.CLOSED)) {
+            cmbStatus.setValue(
+                    FXCollections.observableArrayList("Processing")
+            );
+            cmbStatus.setDisable(true);
+
         }
     }
 
@@ -158,6 +175,7 @@ public class ServiceDetailsFormController {
         switch (status){
             case "Processing" : repairBo.updateStatus(StatusType.PROCESSING,dto.getRepairId());break;
             case "Completed" : repairBo.updateStatus(StatusType.COMPLETED,dto.getRepairId());break;
+            case "Closed" : repairBo.updateStatus(StatusType.CLOSED,dto.getRepairId());break;
         }
     }
 

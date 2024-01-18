@@ -185,6 +185,9 @@ public class ViewOrdersFormController {
         }else if (status==2){
             label.setText("Completed");
             label.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+        } else if (status == 3) {
+            label.setText("Closed");
+            label.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         }
         return label;
     }
