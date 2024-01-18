@@ -2,7 +2,7 @@ package dto;
 
 import lombok.*;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -12,4 +12,10 @@ public class RepairDetailsDto {
     private String partName;
     private double price;
     private String repairId;
+
+    public RepairDetailsDto(String partName, double price, String repairId) {
+        this.partName = partName;
+        this.price = price;
+        this.repairId = repairId;
+    }
 }

@@ -10,14 +10,19 @@ import dto.RepairDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import util.BoType;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -32,6 +37,7 @@ public class PlaceServiceOrderFormController {
     public Label lblEmail;
     public JFXTextArea txtDesc;
     public JFXTextField txtItemName;
+    public BorderPane pane;
 
     private RepairBo repairBo = BoFactory.getInstance().getBo(BoType.REPAIR);
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
@@ -54,11 +60,24 @@ public class PlaceServiceOrderFormController {
         lblServiceId.setText(repairBo.generateId());
     }
 
-    public void BackBtnOnAction(ActionEvent actionEvent) {
+    public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
 
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
+        stage.setTitle("User Dashboard");
+        stage.centerOnScreen();
+        stage.show();
     }
 
-    public void NewCustomerBtnOnAction(ActionEvent actionEvent) {
+    public void NewCustomerBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CreateCustomerForm.fxml"))));
+        stage.setTitle("Create Customer");
+        stage.centerOnScreen();
+        CreateCustomerFormController controller = new CreateCustomerFormController();
+        controller.setStage("Service");
+
+        stage.show();
     }
 
     public void ConformOrderBtnOnAction(ActionEvent actionEvent) {
@@ -66,7 +85,8 @@ public class PlaceServiceOrderFormController {
                 lblServiceId.getText(),
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                 lblCustomerId.getText(),
-                txtItemName.getText()
+                txtItemName.getText(),
+                txtDesc.getText()
         );
         Boolean isSaved = repairBo.saveRepair(dto);
         if (isSaved){

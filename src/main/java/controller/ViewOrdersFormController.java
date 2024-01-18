@@ -2,11 +2,13 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.OrderBo;
+import bo.custom.RepairBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.OrderDto;
+import dto.RepairDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,8 +25,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.codehaus.stax2.ri.typed.ValueDecoderFactory;
 import tm.OrderTm;
 import tm.OrderTypeTm;
+import tm.RepairTm;
 import util.BoType;
 
 import java.io.IOException;
@@ -43,6 +47,7 @@ public class ViewOrdersFormController {
     public TreeTableColumn colOption;
 
     private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
+    private RepairBo repairBo = BoFactory.getInstance().getBo(BoType.REPAIR);
 
     public void initialize() throws IOException {
         Image logoImg = new Image("/img/E&E Logo.png");
@@ -57,6 +62,8 @@ public class ViewOrdersFormController {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                    break;
+                case "Services" : loadServiceOrders();break;
             }
         }));
 
@@ -111,5 +118,43 @@ public class ViewOrdersFormController {
         stage.close();
         controller.setData(dto);
         System.out.println(dto);
+    }
+
+    private void loadServiceOrders(){
+        List<RepairDto> list = repairBo.getAll();
+        ObservableList<RepairTm> tmList = FXCollections.observableArrayList();
+        for (RepairDto dto:list) {
+            JFXButton btn = new JFXButton("Details");
+            btn.setOnAction(actionEvent -> {
+                try {
+                    btnActionService(dto);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            tmList.add(new RepairTm(
+                    dto.getRepairId(),
+                    dto.getDate(),
+                    "Pending",
+                    btn
+            ));
+        }
+        TreeItem<RepairTm> treeItem = new RecursiveTreeItem<>(tmList,RecursiveTreeObject::getChildren);
+        tblOrders.setRoot(treeItem);
+        tblOrders.setShowRoot(false);
+    }
+
+    private void btnActionService(RepairDto dto) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ServiceDetailsForm.fxml"));
+        Parent root = loader.load();
+        ServiceDetailsFormController controller = loader.getController();
+        Stage stage = (Stage) pane.getScene().getWindow();
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(root));
+        newStage.setTitle("Service Details");
+        newStage.centerOnScreen();
+        newStage.show();
+        controller.setData(dto);
+        stage.close();
     }
 }

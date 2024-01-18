@@ -3,8 +3,6 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 Q
 !src/main/java/Appinitializer.java,d\d\dd3c2df894bbe7f469c80149c690b6f4ea350470
-K
-src/main/java/dao/test.java,7\8\781aa29b190e202569014a0a05dfe2b4ba9c3f62
 N
 src/main/java/entity/Item.java,e\b\ebc4e4f150c5bb35020e5b9eb0c7b226c08ed0b0
 `
@@ -591,3 +589,7 @@ U
 .src/main/java/bo/custom/impl/RepairBoImpl.java,e\9\e9171d766d635a40a90fd446660033d0b59a5ded
 j
 :src/main/java/controller/ServiceDetailsFormController.java,6\3\63e9f15ee8b3a0529e5302bc9a513b0fba157065
+N
+src/main/java/tm/RepairTm.java,b\e\bef6f6f6670c607b37ad4131c1e9bca2e237adf7
+M
+src/main/java/tm/PartsTm.java,5\9\59bc192ffd1015933beea59ce38a66734d54a3a9

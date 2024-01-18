@@ -91,6 +91,8 @@ public class PlaceOrderFormController {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CreateCustomerForm.fxml"))));
         stage.setTitle("Create Customer");
         stage.centerOnScreen();
+        CreateCustomerFormController controller = new CreateCustomerFormController();
+        controller.setStage("Order");
         stage.show();
     }
 

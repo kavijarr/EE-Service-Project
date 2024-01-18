@@ -16,10 +16,9 @@ import java.util.List;
 public class Repair {
     @Id
     private String repairId;
-
     private String date;
-
     private String itemName;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "customerId")
@@ -28,10 +27,11 @@ public class Repair {
     @OneToMany(mappedBy = "repair", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<RepairDetails> list;
 
-    public Repair(String repairId, String date, Customer customer, String itemName) {
+    public Repair(String repairId, String date, String itemName, String description, Customer customer) {
         this.repairId = repairId;
         this.date = date;
+        this.itemName = itemName;
+        this.description = description;
         this.customer = customer;
-        this.itemName= itemName;
     }
 }

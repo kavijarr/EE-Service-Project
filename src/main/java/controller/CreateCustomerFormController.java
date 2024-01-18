@@ -26,6 +26,7 @@ public class CreateCustomerFormController {
     public JFXTextField txtCustomerName;
     public JFXTextField txtCustomerEmail;
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
+    private static String type;
 
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
@@ -50,9 +51,16 @@ public class CreateCustomerFormController {
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
+        if(type.equals("Service")){
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceServiceOrderForm.fxml"))));
+        } else if (type.equals("Order")) {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
+        }
         stage.setTitle("Place Order");
         stage.centerOnScreen();
         stage.show();
+    }
+    public void setStage(String data){
+        this.type=data;
     }
 }

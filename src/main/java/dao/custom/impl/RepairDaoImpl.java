@@ -3,6 +3,7 @@ package dao.custom.impl;
 import dao.custom.Repairdao;
 import entity.Item;
 import entity.Repair;
+import entity.RepairDetails;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -33,7 +34,10 @@ public class RepairDaoImpl implements Repairdao {
 
     @Override
     public List<Repair> getAll() {
-        return null;
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM Repair");
+        List<Repair> list = query.list();
+        return list;
     }
 
     @Override
@@ -48,5 +52,27 @@ public class RepairDaoImpl implements Repairdao {
         }
         session.close();
         return null;
+    }
+
+    @Override
+    public Boolean saveDetails(List<RepairDetails> list) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Repair repair = session.find(Repair.class,list.get(0).getRepair().getRepairId());
+        for (RepairDetails entity:list) {
+            repair.getList().add(entity);
+        }
+        session.save(repair);
+        transaction.commit();
+        session.close();
+        return true;
+    }
+
+    @Override
+    public Repair getRepair(String id) {
+        Session session = HibernateUtil.getSession();
+        Repair repair = session.find(Repair.class, id);
+        session.close();
+        return repair;
     }
 }

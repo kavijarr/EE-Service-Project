@@ -5,9 +5,14 @@ import dao.DaoFactory;
 import dao.custom.CustomerDao;
 import dao.custom.Repairdao;
 import dto.OrderDto;
+import dto.RepairDetailsDto;
 import dto.RepairDto;
 import entity.Repair;
+import entity.RepairDetails;
 import util.DaoType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RepairBoImpl implements RepairBo {
 
@@ -18,8 +23,9 @@ public class RepairBoImpl implements RepairBo {
         return repairdao.save(new Repair(
                 dto.getRepairId(),
                 dto.getDate(),
-                customerDao.getCustomer(dto.getCustomerId()),
-                dto.getItemName()
+                dto.getItemName(),
+                dto.getDesc(),
+                customerDao.getCustomer(dto.getCustomerId())
         ));
     }
 
@@ -34,5 +40,34 @@ public class RepairBoImpl implements RepairBo {
         }else {
             return ("SR001");
         }
+    }
+
+    @Override
+    public List<RepairDto> getAll() {
+        List<Repair> list = repairdao.getAll();
+        List<RepairDto> dtoList = new ArrayList<>();
+        for (Repair entity:list) {
+            dtoList.add(new RepairDto(
+                    entity.getRepairId(),
+                    entity.getDate(),
+                    entity.getCustomer().getId(),
+                    entity.getItemName(),
+                    entity.getDescription()
+            ));
+        }
+        return dtoList;
+    }
+
+    @Override
+    public Boolean saveDetails(List<RepairDetailsDto> list) {
+        List<RepairDetails> entityList = new ArrayList<>();
+        for (RepairDetailsDto dto: list) {
+            entityList.add(new RepairDetails(
+                    dto.getPartName(),
+                    dto.getPrice(),
+                    repairdao.getRepair(dto.getRepairId())
+            ));
+        }
+        return repairdao.saveDetails(entityList);
     }
 }
