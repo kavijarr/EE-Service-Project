@@ -25,6 +25,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import tm.OrderTm;
 import util.BoType;
+import util.Login;
+import util.UserType;
 
 import java.io.IOException;
 import java.util.List;
@@ -97,10 +99,18 @@ public class ItemCatelogController {
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
-        stage.show();
-        stage.setTitle("User Dashboard");
-        stage.centerOnScreen();
+        if (Login.getUser().equals(UserType.STAFF)){
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
+            stage.show();
+            stage.setTitle("User Dashboard");
+            stage.centerOnScreen();
+        } else if (Login.getUser().equals(UserType.ADMIN)) {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminDashboard.fxml"))));
+            stage.show();
+            stage.setTitle("Admin Dashboard");
+            stage.centerOnScreen();
+        }
+
     }
     private void setTotal(){
         lblTotal.setText(String.valueOf(total));

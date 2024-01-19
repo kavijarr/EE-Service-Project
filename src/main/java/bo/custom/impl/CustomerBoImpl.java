@@ -6,6 +6,7 @@ import dao.custom.CustomerDao;
 import dto.CustomerDto;
 import entity.Customer;
 import entity.Item;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import util.DaoType;
 
 import java.util.ArrayList;
@@ -71,5 +72,12 @@ public class CustomerBoImpl implements CustomerBo {
                 entity.getCustomerEmail(),
                 entity.getContactNumber()
         );
+    }
+
+    @Override
+    public JRBeanCollectionDataSource getCustomerReport() {
+        List<Customer> customers = customerDao.getAll();
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(customers);
+        return dataSource;
     }
 }

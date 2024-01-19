@@ -20,6 +20,7 @@ public class BoFactory {
             case ORDER:return (T) new OrderBoImpl();
             case ORDERDETAILS:return (T) new OrderDetailsBoImpl();
             case REPAIR:return (T) new RepairBoImpl();
+            case USER:return (T) new UserBoImpl();
         }
         return null;
     }

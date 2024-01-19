@@ -51,7 +51,12 @@ public class UserDashboardController {
         stage.centerOnScreen();
     }
 
-    public void ReportsBtnOnAction(ActionEvent actionEvent) {
+    public void ReportsBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ReportsForm.fxml"))));
+        stage.show();
+        stage.setTitle("Reports");
+        stage.centerOnScreen();
     }
 
     public void AddItemBtnOnAction(ActionEvent actionEvent) throws IOException {
@@ -60,13 +65,5 @@ public class UserDashboardController {
         stage.show();
         stage.setTitle("Add New Item");
         stage.centerOnScreen();
-    }
-
-    public void CustomersBtnOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ViewCustomersForm.fxml"))));
-        stage.setTitle("Customers");
-        stage.centerOnScreen();
-        stage.show();
     }
 }

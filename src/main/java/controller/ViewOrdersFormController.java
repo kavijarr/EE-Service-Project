@@ -32,6 +32,8 @@ import tm.OrderTm;
 import tm.OrderTypeTm;
 import tm.RepairTm;
 import util.BoType;
+import util.Login;
+import util.UserType;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -81,10 +83,17 @@ public class ViewOrdersFormController {
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
-        stage.setTitle("User Dashboard");
-        stage.centerOnScreen();
-        stage.show();
+        if (Login.getUser().equals(UserType.STAFF)){
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
+            stage.show();
+            stage.setTitle("User Dashboard");
+            stage.centerOnScreen();
+        } else if (Login.getUser().equals(UserType.ADMIN)) {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminDashboard.fxml"))));
+            stage.show();
+            stage.setTitle("Admin Dashboard");
+            stage.centerOnScreen();
+        }
     }
 
     private void loadOrders() throws IOException {

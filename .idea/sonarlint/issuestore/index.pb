@@ -597,3 +597,33 @@ R
 "src/main/java/util/StatusType.java,5\b\5b670c490154fc1a0bf65788cccc826f6240b59a
 R
 "src/main/java/util/StatusInfo.java,e\e\eebafac17b162a1992db8903734f63dda881607d
+c
+3src/main/java/controller/ReportsFormController.java,9\d\9d392074829cc3548275c6dd7ae9351b9f17864e
+N
+src/main/java/entity/User.java,b\a\ba7ac8670f3f87adc8663aab792e9f47d90839bc
+N
+src/main/java/dto/UserDto.java,1\5\15c81aa038b853c33b659e8125608969dae8b684
+U
+%src/main/java/dao/custom/UserDao.java,4\9\49c7f008db4522fee47b03361065c7bf35c9c601
+^
+.src/main/java/dao/custom/impl/UserDaoImpl.java,6\2\62a74c950db36d32f98fa3f1383c905f4f97dba0
+S
+#src/main/java/bo/custom/UserBo.java,3\7\3780cd9a79b9b80cfc2df743b9df6572623ac4f9
+]
+-src/main/java/bo/custom/impl/SuperBoImpl.java,a\f\af1b44c67aeb915ecbaed49423d8c81d4a805685
+f
+6src/main/java/controller/AdminDashboardController.java,0\5\05c4c65716b1f0ddd02edea067463cd22058528e
+\
+,src/main/java/bo/custom/impl/UserBoImpl.java,4\d\4d8441750a20a4dbc10261e6fe779099e1ccb033
+L
+src/main/java/tm/UserTm.java,d\d\dd0562f66e94ff934b274c52b7d7e639f02a12f4
+l
+<src/main/java/controller/UserRegistrationFormController.java,0\3\03af09122723e303e07faa4c3b35c4c0a26e606e
+M
+src/main/java/util/Login.java,5\d\5dbb1aeabbb76ea31444aed5707fe5f21be2be4b
+P
+ src/main/java/util/UserTypr.java,8\4\84a1dc236f58861b4d4ef4bd3ac102051afadee4
+P
+ src/main/java/util/UserType.java,d\c\dcb9cba51fd753d4899203a81f13d24ceb4987a4
+f
+6src/main/java/controller/StaffLoginFormController.java,7\6\760b72c7b8c9ac1f078197bd0858edecd1be6d7d

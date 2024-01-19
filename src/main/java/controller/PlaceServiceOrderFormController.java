@@ -20,9 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import util.BoType;
-import util.StatusInfo;
-import util.StatusType;
+import util.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -63,12 +61,18 @@ public class PlaceServiceOrderFormController {
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
-
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
-        stage.setTitle("User Dashboard");
-        stage.centerOnScreen();
-        stage.show();
+        if (Login.getUser().equals(UserType.STAFF)){
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
+            stage.show();
+            stage.setTitle("User Dashboard");
+            stage.centerOnScreen();
+        } else if (Login.getUser().equals(UserType.ADMIN)) {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminDashboard.fxml"))));
+            stage.show();
+            stage.setTitle("Admin Dashboard");
+            stage.centerOnScreen();
+        }
     }
 
     public void NewCustomerBtnOnAction(ActionEvent actionEvent) throws IOException {

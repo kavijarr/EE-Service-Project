@@ -18,6 +18,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import util.BoType;
+import util.Login;
+import util.UserType;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,10 +48,17 @@ public class  AddItemFormController {
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
-        stage.show();
-        stage.setTitle("User Dashboard");
-        stage.centerOnScreen();
+        if (Login.getUser().equals(UserType.STAFF)){
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
+            stage.show();
+            stage.setTitle("User Dashboard");
+            stage.centerOnScreen();
+        } else if (Login.getUser().equals(UserType.ADMIN)) {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminDashboard.fxml"))));
+            stage.show();
+            stage.setTitle("Admin Dashboard");
+            stage.centerOnScreen();
+        }
     }
 
     public void AddImgBtnOnAction(ActionEvent actionEvent) throws MalformedURLException {
