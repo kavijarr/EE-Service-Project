@@ -10,6 +10,9 @@ import util.BoType;
 import util.DaoType;
 
 import javax.swing.text.StyledEditorKit;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +74,34 @@ public class UserBoImpl implements UserBo {
 
         }catch (NullPointerException e){
             return null;
+        }
+    }
+
+    @Override
+    public String encrypt(String data) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(data.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashedPassword = no.toString(16);
+            while (hashedPassword.length() < 32) {
+                hashedPassword = "0" + hashedPassword;
+            }
+            return hashedPassword;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            // Handle the exception according to your needs
+            return null;
+        }
+    }
+
+    @Override
+    public Boolean checkPassword(String password, UserDto user) {
+        String pw = encrypt(password);
+        if (pw.equals(user.getPassword())){
+            return true;
+        }else {
+            return false;
         }
     }
 }

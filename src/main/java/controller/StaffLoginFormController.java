@@ -27,7 +27,7 @@ public class StaffLoginFormController {
     public void StaffLoginBtnOnAction(ActionEvent actionEvent) throws IOException {
         try {
            UserDto user = userBo.getUser(txtEmail.getText());
-            if (user.getPassword().equals(txtPassword.getText())){
+            if (userBo.checkPassword(txtPassword.getText(),user)){
                 Stage stage = (Stage) pane.getScene().getWindow();
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
                 stage.setTitle("Admin Dashboard");
@@ -43,7 +43,6 @@ public class StaffLoginFormController {
     }
 
     public void ForgotPasswordBtnOnAction(ActionEvent actionEvent) {
-
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {

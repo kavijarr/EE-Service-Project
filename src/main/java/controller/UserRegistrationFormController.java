@@ -18,6 +18,9 @@ import javafx.stage.Stage;
 import util.BoType;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class UserRegistrationFormController {
     public Circle logo;
@@ -41,7 +44,7 @@ public class UserRegistrationFormController {
                 lblId.getText(),
                 txtName.getText(),
                 txtEmail.getText(),
-                txtPassword.getText()
+                userBo.encrypt(txtPassword.getText())
         ));
         if (isSaved){
             new Alert(Alert.AlertType.CONFIRMATION,"User Succesfully Saved !").show();
