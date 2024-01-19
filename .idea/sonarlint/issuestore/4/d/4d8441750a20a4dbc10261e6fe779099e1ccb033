@@ -1,0 +1,11 @@
+
+R
+java:S2209"5Change this instance-reference to a static reference.(ÈëÎ”8­ôÇŠÒ1
+R
+java:S6397"5Replace this character class by the character itself.(Ù£Ç8®ôÇŠÒ1
+E
+java:S1128"(Remove this unused import 'entity.Item'.(ÏÂã8²ôÇŠÒ1
+J
+java:S1128	"(Remove this unused import 'util.BoType'.(¸æÜ²şÿÿÿÿ8²ôÇŠÒ1
+Z
+java:S1128"=Remove this unused import 'javax.swing.text.StyledEditorKit'.(ùÄÀ8²ôÇŠÒ1

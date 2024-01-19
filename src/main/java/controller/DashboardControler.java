@@ -23,7 +23,12 @@ public class DashboardControler {
         logo.setFill(new ImagePattern(logoImg));
     }
 
-    public void StaffLoginBtn(ActionEvent actionEvent) {
+    public void StaffLoginBtn(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/StaffLoginForm.fxml"))));
+        stage.setTitle("Staff Login");
+        stage.centerOnScreen();
+        stage.show();
     }
 
     public void AdminBtnOnAction(ActionEvent actionEvent) {

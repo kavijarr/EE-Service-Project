@@ -57,4 +57,20 @@ public class UserBoImpl implements UserBo {
     public Boolean deleteUser(String value) {
         return userDao.delete(value);
     }
+
+    @Override
+    public UserDto getUser(String value) {
+        User user = userDao.getUser(value);
+        try {
+            return new UserDto(
+                    user.getId(),
+                    user.getName(),
+                    user.getEmail(),
+                    user.getPassword()
+            );
+
+        }catch (NullPointerException e){
+            return null;
+        }
+    }
 }

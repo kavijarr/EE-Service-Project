@@ -3,11 +3,13 @@ package bo.custom.impl;
 import bo.custom.OrderBo;
 import dao.DaoFactory;
 import dao.custom.OrderDao;
+import dto.OrderDetailsDto;
 import dto.OrderDto;
 import entity.Item;
 import entity.Orders;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import tm.OrderTm;
 import util.DaoType;
 
@@ -43,6 +45,13 @@ public class OrderBoImpl implements OrderBo {
     @Override
     public List<OrderDto> getAll() {
         return orderDao.getAll();
+    }
+
+    @Override
+    public JRBeanCollectionDataSource getOrderSummery(String value) {
+        List<OrderDetailsDto> orderDetails = orderDao.getOrderDetails(value);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(orderDetails);
+        return dataSource;
     }
 
     public void setTmList(ObservableList<OrderTm> list) {

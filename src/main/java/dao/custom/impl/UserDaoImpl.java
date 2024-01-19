@@ -66,4 +66,18 @@ public class UserDaoImpl implements UserDao {
         session.close();
         return null;
     }
+
+    @Override
+    public User getUser(String value) {
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM User WHERE email = :search");
+        query.setParameter("search",value);
+        query.setMaxResults(1);
+        List<User> list = query.list();
+        session.close();
+        if (!list.isEmpty()){
+            return list.get(0);
+        }
+        return null;
+    }
 }

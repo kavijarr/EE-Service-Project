@@ -23,6 +23,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import tm.OrderTm;
@@ -134,8 +139,17 @@ public class PlaceOrderFormController {
                 ));
 
                 if (isSaved){
-                    new Alert(Alert.AlertType.CONFIRMATION,"Order Succesfully Saved!").show();
+                    new Alert(Alert.AlertType.INFORMATION,"Order Succesfully Saved!").show();
                     orderBo.setTmList(null);
+                    try {
+                        JasperDesign design = JRXmlLoader.load("src/main/resources/reports/orderSummery.jrxml");
+                        JasperReport jasperReport = JasperCompileManager.compileReport(design);
+                        JRBeanCollectionDataSource customerReport = orderBo.getOrderSummery(lblOrderId.getText());
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,customerReport);
+                        JasperViewer.viewReport(jasperPrint,false);
+                    } catch (JRException e) {
+                        throw new RuntimeException(e);
+                    }
                 }else{
                     new Alert(Alert.AlertType.ERROR,"Error").show();
                 }

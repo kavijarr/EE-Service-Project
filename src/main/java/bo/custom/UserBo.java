@@ -11,4 +11,6 @@ public interface UserBo extends SuperBo {
     Boolean saveUser(UserDto dto);
     List<UserDto> getAll();
     Boolean deleteUser(String value);
+
+    UserDto getUser(String value);
 }

@@ -5,4 +5,5 @@ import entity.User;
 
 public interface UserDao extends CrudDao<User> {
     User getLastUser();
+    User getUser(String value);
 }

@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import util.Login;
 
 import java.awt.*;
 import java.io.IOException;
@@ -23,8 +24,13 @@ public class UserDashboardController {
         logo.setFill(new ImagePattern(logoImg));
     }
 
-    public void BackBtnOnAction(ActionEvent actionEvent) {
-
+    public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"))));
+        stage.show();
+        stage.setTitle("Dashboard");
+        stage.centerOnScreen();
+        Login.clearType();
     }
 
     public void ItemCatelogBtnOnAction(ActionEvent actionEvent) throws IOException {
