@@ -154,7 +154,7 @@ public class PlaceOrderFormController {
                         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                         JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
                         byte[] reportBytes = byteArrayOutputStream.toByteArray();
-                        emailSender.sendReciept("kavijakumuditha12@gmail.com",reportBytes);
+                        emailSender.sendReciept(lblCustomerEmail.getText(),reportBytes);
                     } catch (JRException e) {
                         throw new RuntimeException(e);
                     }
