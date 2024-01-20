@@ -26,13 +26,16 @@ import javafx.stage.Stage;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.view.JasperViewer;
-import org.controlsfx.control.textfield.AutoCompletionBinding;
-import org.controlsfx.control.textfield.TextFields;
 import tm.OrderTm;
 import util.BoType;
+import util.EmailSender;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -53,6 +56,7 @@ public class PlaceOrderFormController {
     public TreeTableColumn colAmount;
     public Label lblTotal;
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
+    private EmailSender emailSender = new EmailSender();
     private List<CustomerDto> customers = new ArrayList<>();
     private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
     private ObservableList<OrderTm> tmList;
@@ -147,6 +151,10 @@ public class PlaceOrderFormController {
                         JRBeanCollectionDataSource customerReport = orderBo.getOrderSummery(lblOrderId.getText());
                         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,customerReport);
                         JasperViewer.viewReport(jasperPrint,false);
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
+                        byte[] reportBytes = byteArrayOutputStream.toByteArray();
+                        emailSender.sendReciept("kavijakumuditha12@gmail.com",reportBytes);
                     } catch (JRException e) {
                         throw new RuntimeException(e);
                     }
