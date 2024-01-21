@@ -74,6 +74,12 @@ public class ServiceDetailsFormController {
         txtDesc.setDisable(true);
         showTime();
 
+        Platform.runLater(()->{
+            if (dto.getStatus()==StatusInfo.statusType(StatusType.PENDING)){
+                completeOrderBtn.setDisable(true);
+            }
+        });
+
         colPartName.setCellValueFactory(new TreeItemPropertyValueFactory<>("partName"));
         colPartCost.setCellValueFactory(new TreeItemPropertyValueFactory<>("partCost"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
@@ -198,13 +204,16 @@ public class ServiceDetailsFormController {
     }
 
     private void updateStatus(String status){
+        boolean isUpdated=false;
         switch (status){
-            case "Processing" : repairBo.updateStatus(StatusType.PROCESSING,dto.getRepairId());break;
-            case "Completed" : repairBo.updateStatus(StatusType.COMPLETED,dto.getRepairId());break;
-            case "Closed" : repairBo.updateStatus(StatusType.CLOSED,dto.getRepairId());break;
+            case "Processing" : isUpdated = repairBo.updateStatus(StatusType.PROCESSING,dto.getRepairId());break;
+            case "Completed" : isUpdated = repairBo.updateStatus(StatusType.COMPLETED,dto.getRepairId());break;
+            case "Closed" : isUpdated = repairBo.updateStatus(StatusType.CLOSED,dto.getRepairId());break;
         }
-        if (status.equals("Processing")){
-            repairBo.updateStatus(StatusType.PROCESSING,dto.getRepairId());
+        if (isUpdated){
+            new Alert(Alert.AlertType.INFORMATION,"Status Updated Succsesfully").show();
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Error").show();
         }
     }
 
