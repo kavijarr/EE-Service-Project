@@ -1,12 +1,13 @@
 package controller;
 
 import bo.BoFactory;
-import bo.custom.CustomerBo;
+import bo.custom.UserBo;
 import com.jfoenix.controls.JFXTextField;
-import dto.CustomerDto;
+import dto.UserDto;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,29 +20,30 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import util.BoType;
+import util.EmailSender;
 
 import java.io.IOException;
+import java.nio.FloatBuffer;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
-public class CreateCustomerFormController {
+public class UpdatePasswordFormController {
     public Circle logo;
+    public JFXTextField txtOtp;
+    public JFXTextField txtNewPw;
+    private static UserDto user;
     public BorderPane pane;
-    public Label lblCustomerId;
-    public JFXTextField txtMobileNumber;
-    public JFXTextField txtCustomerName;
-    public JFXTextField txtCustomerEmail;
     public Label lblDate;
     public Label lblTime;
-    private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
-    private static String type;
+    private EmailSender emailSender = new EmailSender();
+    private String otp;
+    UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
 
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
-
-        lblCustomerId.setText(customerBo.generateId());
-
         showTime();
     }
 
@@ -62,32 +64,41 @@ public class CreateCustomerFormController {
         timeline.play();
     }
 
-    public void SaveCustomerBtnAction(ActionEvent actionEvent) {
-        boolean issaved = customerBo.saveCustomer(new CustomerDto(
-                lblCustomerId.getText(),
-                txtCustomerName.getText(),
-                txtCustomerEmail.getText(),
-                txtMobileNumber.getText()
-        ));
-        if (issaved){
-            new Alert(Alert.AlertType.CONFIRMATION,"Customer Succesfully Saved !").show();
-        }else{
-            new Alert(Alert.AlertType.ERROR,"Error").show();
-        }
-    }
-
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) pane.getScene().getWindow();
-        if(type.equals("Service")){
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceServiceOrderForm.fxml"))));
-        } else if (type.equals("Order")) {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
-        }
-        stage.setTitle("Place Order");
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/StaffLoginForm.fxml"))));
+        stage.setTitle("Staff Login");
         stage.centerOnScreen();
         stage.show();
     }
-    public void setStage(String data){
-        this.type=data;
+
+    public void UpdateBtnOnAction(ActionEvent actionEvent) {
+        if (txtOtp.getText().equals(otp)){
+            Boolean isUpdated = userBo.updatePassword(txtNewPw.getText(), user);
+            if (isUpdated){
+                new Alert(Alert.AlertType.INFORMATION,"Password Updated successfully").show();
+            } else{
+                new Alert(Alert.AlertType.ERROR,"Error").show();
+            }
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Incorrect OTP").show();
+        }
+    }
+
+    public void setData(UserDto data){
+        this.user=data;
+    }
+
+    public void RequestOtpBtnOnAction(ActionEvent actionEvent) {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i=0;i<6;i++){
+            sb.append(random.nextInt(10));
+        }
+        otp=sb.toString();
+        Boolean isSent = emailSender.sendOtp(user.getEmail(), otp);
+        if (isSent){
+            new Alert(Alert.AlertType.INFORMATION,"An Email containing the OTP has been sent to the email").show();
+        }
     }
 }

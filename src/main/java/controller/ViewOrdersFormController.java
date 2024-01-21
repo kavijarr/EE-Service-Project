@@ -9,6 +9,9 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.OrderDto;
 import dto.RepairDto;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +30,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.codehaus.stax2.ri.typed.ValueDecoderFactory;
 import tm.OrderTm;
 import tm.OrderTypeTm;
@@ -53,6 +57,8 @@ public class ViewOrdersFormController {
     public TreeTableColumn colDate;
     public TreeTableColumn colState;
     public TreeTableColumn colOption;
+    public Label lblTime;
+    public Label lblDate;
 
     private OrderBo orderBo = BoFactory.getInstance().getBo(BoType.ORDER);
     private RepairBo repairBo = BoFactory.getInstance().getBo(BoType.REPAIR);
@@ -60,6 +66,7 @@ public class ViewOrdersFormController {
     public void initialize() throws IOException {
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
+        showTime();
 
         cmbOption.setItems(options);
         cmbOption.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, option) -> {
@@ -79,6 +86,23 @@ public class ViewOrdersFormController {
         colDate.setCellValueFactory(new TreeItemPropertyValueFactory<>("date"));
         colState.setCellValueFactory(new TreeItemPropertyValueFactory<>("status"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
+    }
+
+    private void showTime(){
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalDateTime now = LocalDateTime.now();
+
+            // Format date and time separately
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = now.format(dateFormatter);
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String formattedTime = now.format(timeFormatter);
+
+            lblDate.setText(formattedDate);
+            lblTime.setText(formattedTime);
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {

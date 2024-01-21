@@ -1,72 +1,75 @@
 
-h	java:S112Å"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8µ»†ˆÒ1
+h	java:S112¿"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8µ»†ˆÒ1
 Q
-java:S3740)"/Provide the parametrized type for this generic.(ŠÄÌûÿÿÿÿ8¶»†ˆÒ1
+java:S3740/"/Provide the parametrized type for this generic.(ŠÄÌûÿÿÿÿ8¶»†ˆÒ1
 L
-java:S3740*"/Provide the parametrized type for this generic.(™¼…ÿ8¶»†ˆÒ1
+java:S37400"/Provide the parametrized type for this generic.(™¼…ÿ8¶»†ˆÒ1
 L
-java:S3740+"/Provide the parametrized type for this generic.(»§²8¶»†ˆÒ1
+java:S37401"/Provide the parametrized type for this generic.(»§²8¶»†ˆÒ1
 L
-java:S3740-"/Provide the parametrized type for this generic.(ŞÊ½½8¶»†ˆÒ1
+java:S37403"/Provide the parametrized type for this generic.(ŞÊ½½8¶»†ˆÒ1
 Q
-java:S3740."/Provide the parametrized type for this generic.(ê¦„÷üÿÿÿÿ8¶»†ˆÒ1
+java:S37404"/Provide the parametrized type for this generic.(ê¦„÷üÿÿÿÿ8¶»†ˆÒ1
 |
-java:S2293•"YReplace the type specification in this constructor call with the diamond operator ("<>").(¿äÛ’ùÿÿÿÿ8¶»†ˆÒ1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¿äÛ’ùÿÿÿÿ8¶»†ˆÒ1
 r
-java:S1104%"PMake logo a static final constant or non-public and provide accessors if needed.(íÂÍÚøÿÿÿÿ8·»†ˆÒ1
+java:S1104+"PMake logo a static final constant or non-public and provide accessors if needed.(íÂÍÚøÿÿÿÿ8·»†ˆÒ1
 r
-java:S1104&"PMake pane a static final constant or non-public and provide accessors if needed.(ÃéÇ¶ûÿÿÿÿ8·»†ˆÒ1
+java:S1104,"PMake pane a static final constant or non-public and provide accessors if needed.(ÃéÇ¶ûÿÿÿÿ8·»†ˆÒ1
 p
-java:S1104'"TMake itemGrid a static final constant or non-public and provide accessors if needed.(ãÑj8·»†ˆÒ1
+java:S1104-"TMake itemGrid a static final constant or non-public and provide accessors if needed.(ãÑj8·»†ˆÒ1
 v
-java:S1104("TMake gridPane a static final constant or non-public and provide accessors if needed.(ğÍÑúÿÿÿÿ8·»†ˆÒ1
+java:S1104."TMake gridPane a static final constant or non-public and provide accessors if needed.(ğÍÑúÿÿÿÿ8·»†ˆÒ1
 y
-java:S1104)"WMake colItemName a static final constant or non-public and provide accessors if needed.(ŠÄÌûÿÿÿÿ8·»†ˆÒ1
+java:S1104/"WMake colItemName a static final constant or non-public and provide accessors if needed.(ŠÄÌûÿÿÿÿ8·»†ˆÒ1
 o
-java:S1104*"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8·»†ˆÒ1
+java:S11040"RMake colQty a static final constant or non-public and provide accessors if needed.(™¼…ÿ8·»†ˆÒ1
 r
-java:S1104+"UMake colOption a static final constant or non-public and provide accessors if needed.(»§²8·»†ˆÒ1
+java:S11041"UMake colOption a static final constant or non-public and provide accessors if needed.(»§²8·»†ˆÒ1
 q
-java:S1104,"TMake lblTotal a static final constant or non-public and provide accessors if needed.(ÿêìˆ8·»†ˆÒ1
+java:S11042"TMake lblTotal a static final constant or non-public and provide accessors if needed.(ÿêìˆ8·»†ˆÒ1
 s
-java:S1104-"VMake orderTable a static final constant or non-public and provide accessors if needed.(ŞÊ½½8·»†ˆÒ1
+java:S11043"VMake orderTable a static final constant or non-public and provide accessors if needed.(ŞÊ½½8·»†ˆÒ1
 w
-java:S1104."UMake colAmount a static final constant or non-public and provide accessors if needed.(ê¦„÷üÿÿÿÿ8¸»†ˆÒ1
+java:S11044"UMake colAmount a static final constant or non-public and provide accessors if needed.(ê¦„÷üÿÿÿÿ8¸»†ˆÒ1
 w
-java:S1104/"UMake reloadBtn a static final constant or non-public and provide accessors if needed.(ŒÌÄóùÿÿÿÿ8¸»†ˆÒ1
+java:S11045"UMake reloadBtn a static final constant or non-public and provide accessors if needed.(ŒÌÄóùÿÿÿÿ8¸»†ˆÒ1
+u
+java:S11046"SMake lblDate a static final constant or non-public and provide accessors if needed.(…“À„ÿÿÿÿÿ8Ç›·ÚÒ1
+p
+java:S11047"SMake lblTime a static final constant or non-public and provide accessors if needed.(¿°×•8ÒÀ·ÚÒ1
 s
-java:S14501"WRemove the "itemList" field and declare it as a local variable in the relevant methods.(şİùv8à»†ˆÒ1
+java:S14509"WRemove the "itemList" field and declare it as a local variable in the relevant methods.(şİùv8à»†ˆÒ1
 W
-java:S22092"5Change this instance-reference to a static reference.(ÎŠ±®úÿÿÿÿ8â»†ˆÒ1
+java:S2209:"5Change this instance-reference to a static reference.(ÎŠ±®úÿÿÿÿ8ã»†ˆÒ1
 W
-java:S22093"5Change this instance-reference to a static reference.(Ñ«óıÿÿÿÿ8ã»†ˆÒ1
-X	java:S1256"<This block of commented-out lines of code should be removed.(èß‚¨8ä»†ˆÒ1
-X	java:S125<"<This block of commented-out lines of code should be removed.(’Ã€ğ8è»†ˆÒ1
-j	java:S100d"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÇ’²8è»†ˆÒ1
+java:S2209;"5Change this instance-reference to a static reference.(Ñ«óıÿÿÿÿ8‚œ·ÚÒ1
+X	java:S125>"<This block of commented-out lines of code should be removed.(èß‚¨8ä»†ˆÒ1
+j	java:S100^"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÇ’²8è»†ˆÒ1
 O
-java:S1172d"2Remove this unused method parameter "actionEvent".(ëÇ’²8é»†ˆÒ1
-L	java:S106u"+Replace this use of System.out by a logger.(Ó›¬œøÿÿÿÿ8ï»†ˆÒ1
+java:S1172^"2Remove this unused method parameter "actionEvent".(ëÇ’²8é»†ˆÒ1
+L	java:S106o"+Replace this use of System.out by a logger.(Ó›¬œøÿÿÿÿ8ï»†ˆÒ1
 T
-java:S2696ˆ"6Make the enclosing method "static" or remove this set.(í¶çİ8ñ»†ˆÒ1
+java:S2696‚"6Make the enclosing method "static" or remove this set.(í¶çİ8ñ»†ˆÒ1
 J
-java:S1125‹"'Remove the unnecessary boolean literal.(›ˆêùÿÿÿÿ8ñ»†ˆÒ1
+java:S1125…"'Remove the unnecessary boolean literal.(›ˆêùÿÿÿÿ8ñ»†ˆÒ1
 T
-java:S2696"6Make the enclosing method "static" or remove this set.(í¶çİ8ò»†ˆÒ1
-^	java:S125"<This block of commented-out lines of code should be removed.(ûíºúÿÿÿÿ8ò»†ˆÒ1
-p	java:S100“"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ğñçÿÿÿÿÿ8ò»†ˆÒ1
+java:S2696‡"6Make the enclosing method "static" or remove this set.(í¶çİ8ò»†ˆÒ1
+^	java:S125‰"<This block of commented-out lines of code should be removed.(ûíºúÿÿÿÿ8ò»†ˆÒ1
+p	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ğñçÿÿÿÿÿ8ò»†ˆÒ1
 U
-java:S1172“"2Remove this unused method parameter "actionEvent".(¾ğñçÿÿÿÿÿ8ò»†ˆÒ1
-p	java:S100š"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈÀäÖşÿÿÿÿ8ô»†ˆÒ1
+java:S1172"2Remove this unused method parameter "actionEvent".(¾ğñçÿÿÿÿÿ8ò»†ˆÒ1
+p	java:S100”"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÈÀäÖşÿÿÿÿ8ô»†ˆÒ1
 T
-java:S1172š"1Remove this unused method parameter "mouseEvent".(ÈÀäÖşÿÿÿÿ8ô»†ˆÒ1
-p	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨«‹´şÿÿÿÿ8ô»†ˆÒ1
+java:S1172”"1Remove this unused method parameter "mouseEvent".(ÈÀäÖşÿÿÿÿ8ô»†ˆÒ1
+p	java:S100˜"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨«‹´şÿÿÿÿ8ô»†ˆÒ1
 U
-java:S1172"2Remove this unused method parameter "actionEvent".(¨«‹´şÿÿÿÿ8ô»†ˆÒ1
+java:S1172˜"2Remove this unused method parameter "actionEvent".(¨«‹´şÿÿÿÿ8ô»†ˆÒ1
 Y
-java:S2696¥"6Make the enclosing method "static" or remove this set.(ûîâÆùÿÿÿÿ8õ»†ˆÒ1
+java:S2696Ÿ"6Make the enclosing method "static" or remove this set.(ûîâÆùÿÿÿÿ8õ»†ˆÒ1
 T
-java:S2696¦"6Make the enclosing method "static" or remove this set.(Îò¿¶8õ»†ˆÒ1
+java:S2696 "6Make the enclosing method "static" or remove this set.(Îò¿¶8¡œ·ÚÒ1
 M
-java:S1128"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8ŒÀ­ˆÒ1
+java:S1128"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8ŒÀ­ˆÒ1
 J
-java:S1144s"-Remove this unused private "setTotal" method.(ŠÿÆÏ8ü»†ˆÒ1
+java:S1144m"-Remove this unused private "setTotal" method.(ŠÿÆÏ8ü»†ˆÒ1

@@ -2601,3 +2601,5 @@ Q.idea/sonarlint/securityhotspotstore/f/c/fc6c5a94b90c91cddfccfd71601349a15d38c6
 Q.idea/sonarlint/securityhotspotstore/d/0/d0bbaae35f7c95eb8696b5dc78ebc685c9cf347a,7\a\7afefca36d1f8105c81c219b826dfd693ae6fde1
 Å
 Q.idea/sonarlint/securityhotspotstore/d/0/d02bdc90f546c24500b9b4a729cecb33d19b04e2,2\9\2976094119efa2d286f7f3280c30632098460ed3
+j
+:src/main/java/controller/UpdatePasswordFormController.java,6\8\68a50057b374a43aa6f2004d84701e37fbaa5ed7

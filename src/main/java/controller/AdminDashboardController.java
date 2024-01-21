@@ -7,11 +7,15 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.UserDto;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
@@ -20,11 +24,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tm.UserTm;
 import util.BoType;
 import util.Login;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class AdminDashboardController {
@@ -35,6 +42,8 @@ public class AdminDashboardController {
     public TreeTableColumn colOption;
     public Circle logo;
     public BorderPane pane;
+    public Label lblDate;
+    public Label lblTime;
 
     private UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
 
@@ -47,6 +56,25 @@ public class AdminDashboardController {
         colName.setCellValueFactory(new TreeItemPropertyValueFactory<>("name"));
         colEmail.setCellValueFactory(new TreeItemPropertyValueFactory<>("email"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
+
+        showTime();
+    }
+
+    private void showTime(){
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalDateTime now = LocalDateTime.now();
+
+            // Format date and time separately
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = now.format(dateFormatter);
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String formattedTime = now.format(timeFormatter);
+
+            lblDate.setText(formattedDate);
+            lblTime.setText(formattedTime);
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) {

@@ -1,15 +1,15 @@
 
 >
-java:S1643X"Use a StringBuilder instead.(‚ÑÙíøÿÿÿÿ8ÙÌ¸šÒ1
+java:S1643X"Use a StringBuilder instead.(‚ÑÙíøÿÿÿÿ8Î¡¤ÓÒ1
 R
-java:S2209"5Change this instance-reference to a static reference.(ÈëÎ”8æÌ¸šÒ1
+java:S2209"5Change this instance-reference to a static reference.(ÈëÎ”8Ù¡¤ÓÒ1
 R
-java:S6397"5Replace this character class by the character itself.(Ù£Ç8èÌ¸šÒ1
+java:S6397"5Replace this character class by the character itself.(Ù£Ç8Û¡¤ÓÒ1
 ^
-java:S1126e"AReplace this if-then-else statement by a single return statement.(—í¥Ş8›À»šÒ1
+java:S1126e"AReplace this if-then-else statement by a single return statement.(—í¥Ş8à¡¤ÓÒ1
 E
-java:S1128"(Remove this unused import 'entity.Item'.(ÏÂã8×ÛÆšÒ1
+java:S1128"(Remove this unused import 'entity.Item'.(ÏÂã8»®‡ÔÒ1
 J
-java:S1128	"(Remove this unused import 'util.BoType'.(¸æÜ²şÿÿÿÿ8×ÛÆšÒ1
+java:S1128	"(Remove this unused import 'util.BoType'.(¸æÜ²şÿÿÿÿ8»®‡ÔÒ1
 Z
-java:S1128"=Remove this unused import 'javax.swing.text.StyledEditorKit'.(ùÄÀ8×ÛÆšÒ1
+java:S1128"=Remove this unused import 'javax.swing.text.StyledEditorKit'.(ùÄÀ8»®‡ÔÒ1

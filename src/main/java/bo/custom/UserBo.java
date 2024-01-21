@@ -14,4 +14,5 @@ public interface UserBo extends SuperBo {
     UserDto getUser(String value);
     String encrypt(String data);
     Boolean checkPassword(String password, UserDto user);
+    Boolean updatePassword(String pw, UserDto dto);
 }

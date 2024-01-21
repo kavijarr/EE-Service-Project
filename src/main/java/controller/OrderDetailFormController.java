@@ -11,6 +11,9 @@ import dto.CustomerDto;
 import dto.ItemDto;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,10 +30,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tm.OrderDetailsTm;
 import util.BoType;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class OrderDetailFormController {
@@ -44,6 +50,8 @@ public class OrderDetailFormController {
     public TreeTableColumn colAmount;
     public Label lblTotal;
     public BorderPane pane;
+    public Label lblDate;
+    public Label lblTime;
     private OrderDto orderDto;
     public Circle logo;
     private OrderDetailsBo orderDetailsBo = BoFactory.getInstance().getBo(BoType.ORDERDETAILS);
@@ -63,10 +71,29 @@ public class OrderDetailFormController {
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
 
+        showTime();
+
         colId.setCellValueFactory(new TreeItemPropertyValueFactory<>("itemId"));
         colName.setCellValueFactory(new TreeItemPropertyValueFactory<>("itemName"));
         colQty.setCellValueFactory(new TreeItemPropertyValueFactory<>("qty"));
         colAmount.setCellValueFactory(new TreeItemPropertyValueFactory<>("amount"));
+    }
+
+    private void showTime(){
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalDateTime now = LocalDateTime.now();
+
+            // Format date and time separately
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = now.format(dateFormatter);
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String formattedTime = now.format(timeFormatter);
+
+            lblDate.setText(formattedDate);
+            lblTime.setText(formattedTime);
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {

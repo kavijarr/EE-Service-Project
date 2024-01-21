@@ -104,4 +104,14 @@ public class UserBoImpl implements UserBo {
             return false;
         }
     }
+
+    @Override
+    public Boolean updatePassword(String pw, UserDto dto) {
+        return userDao.update(new User(
+                dto.getId(),
+                dto.getName(),
+                dto.getEmail(),
+                encrypt(pw)
+        ));
+    }
 }

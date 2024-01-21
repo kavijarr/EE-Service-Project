@@ -8,6 +8,9 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.ItemDto;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,12 +26,15 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tm.OrderTm;
 import util.BoType;
 import util.Login;
 import util.UserType;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ItemCatelogController {
@@ -45,6 +51,8 @@ public class ItemCatelogController {
     public JFXTreeTableView orderTable;
     public TreeTableColumn colAmount;
     public JFXButton reloadBtn;
+    public Label lblDate;
+    public Label lblTime;
 
     private List<ItemDto> itemList;
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
@@ -57,44 +65,30 @@ public class ItemCatelogController {
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
 
-//        itemList = itemBo.getEnabled();
-//        int collumn =0;
-//        int row =1;
-//
-//        for(int i=0;i<itemList.size();i++){
-//            FXMLLoader fxmlLoader = new FXMLLoader();
-//            fxmlLoader.setLocation(getClass().getResource("/view/Item.fxml"));
-//            try {
-//                AnchorPane anchorPane = fxmlLoader.load();
-//
-//                ItemController itemController = fxmlLoader.getController();
-//                itemController.setData(itemList.get(i));
-//                if (collumn==3){
-//                    collumn=0;
-//                    row++;
-//                }
-//                itemGrid.add(anchorPane,collumn++,row);
-//                GridPane.setMargin(anchorPane,new Insets(10));
-//                itemGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
-//                itemGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-//                itemGrid.setMaxWidth(Region.USE_COMPUTED_SIZE);
-//
-//                itemGrid.setMinHeight(Region.USE_COMPUTED_SIZE);
-//                itemGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-//                itemGrid.setMaxHeight(Region.USE_COMPUTED_SIZE);
-//
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//
-//
-//
-//        }
         loadItems();
+        showTime();
+
         colItemName.setCellValueFactory(new TreeItemPropertyValueFactory<>("itemName"));
         colQty.setCellValueFactory(new TreeItemPropertyValueFactory<>("qty"));
         colAmount.setCellValueFactory(new TreeItemPropertyValueFactory<>("amount"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("deleteBtn"));
+    }
+
+    private void showTime(){
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalDateTime now = LocalDateTime.now();
+
+            // Format date and time separately
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = now.format(dateFormatter);
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String formattedTime = now.format(timeFormatter);
+
+            lblDate.setText(formattedDate);
+            lblTime.setText(formattedTime);
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {

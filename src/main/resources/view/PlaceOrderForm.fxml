@@ -43,7 +43,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <GridPane GridPane.columnIndex="2">
+                  <GridPane GridPane.columnIndex="2" GridPane.halignment="CENTER">
                     <columnConstraints>
                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -54,8 +54,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Date" textFill="WHITE" GridPane.rowIndex="1" />
-                        <Label layoutX="160.0" layoutY="47.0" text="Time" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lblDate" text="Date" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="lblTime" layoutX="160.0" layoutY="47.0" text="Time" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane>

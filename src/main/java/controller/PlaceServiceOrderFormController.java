@@ -7,6 +7,9 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import dto.CustomerDto;
 import dto.RepairDto;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +23,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import util.*;
 
 import java.io.IOException;
@@ -38,6 +42,8 @@ public class PlaceServiceOrderFormController {
     public JFXTextArea txtDesc;
     public JFXTextField txtItemName;
     public BorderPane pane;
+    public Label lblDate;
+    public Label lblTime;
 
     private RepairBo repairBo = BoFactory.getInstance().getBo(BoType.REPAIR);
     private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
@@ -46,6 +52,7 @@ public class PlaceServiceOrderFormController {
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
+        showTime();
 
         loadCustomers();
         cmbNumber.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, number) -> {
@@ -58,6 +65,23 @@ public class PlaceServiceOrderFormController {
             }
         }));
         lblServiceId.setText(repairBo.generateId());
+    }
+
+    private void showTime(){
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalDateTime now = LocalDateTime.now();
+
+            // Format date and time separately
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = now.format(dateFormatter);
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String formattedTime = now.format(timeFormatter);
+
+            lblDate.setText(formattedDate);
+            lblTime.setText(formattedTime);
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     public void BackBtnOnAction(ActionEvent actionEvent) throws IOException {

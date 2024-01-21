@@ -50,8 +50,8 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label text="Date" textFill="WHITE" GridPane.halignment="CENTER" />
-                        <Label layoutX="48.0" layoutY="47.0" text="Time" textFill="WHITE" GridPane.columnIndex="1" />
+                        <Label fx:id="lblDate" text="Date" textFill="WHITE" GridPane.halignment="CENTER" />
+                        <Label fx:id="lblTime" layoutX="48.0" layoutY="47.0" text="Time" textFill="WHITE" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane>

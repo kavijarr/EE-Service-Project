@@ -4,6 +4,9 @@ import bo.BoFactory;
 import bo.custom.UserBo;
 import com.jfoenix.controls.JFXTextField;
 import dto.UserDto;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,12 +18,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import util.BoType;
 
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class UserRegistrationFormController {
     public Circle logo;
@@ -29,14 +35,34 @@ public class UserRegistrationFormController {
     public Label lblId;
     public JFXTextField txtName;
     public BorderPane pane;
+    public Label lblDate;
+    public Label lblTime;
 
     UserBo userBo = BoFactory.getInstance().getBo(BoType.USER);
 
     public void initialize(){
         Image logoImg = new Image("/img/E&E Logo.png");
         logo.setFill(new ImagePattern(logoImg));
+        showTime();
 
         lblId.setText(userBo.generateId());
+    }
+
+    private void showTime(){
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalDateTime now = LocalDateTime.now();
+
+            // Format date and time separately
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = now.format(dateFormatter);
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String formattedTime = now.format(timeFormatter);
+
+            lblDate.setText(formattedDate);
+            lblTime.setText(formattedTime);
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     public void RegisterBtnOnAction(ActionEvent actionEvent) {
