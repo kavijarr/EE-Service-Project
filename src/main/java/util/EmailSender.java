@@ -6,12 +6,9 @@ import java.util.Properties;
 
 public class EmailSender {
 
-    final String username = "kavijakumuditha12@gmail.com";
-    final String password = "inha wydj scgr pubr";
+    final String username = "";
+    final String password = "";
     public void sendReciept(String reciever, byte[] reportBytes) {
-        String pdf = "src/main/resources/reports/pdf/orderSummery.pdf";
-
-
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");

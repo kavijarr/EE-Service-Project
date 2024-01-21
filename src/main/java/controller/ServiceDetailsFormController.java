@@ -203,6 +203,9 @@ public class ServiceDetailsFormController {
             case "Completed" : repairBo.updateStatus(StatusType.COMPLETED,dto.getRepairId());break;
             case "Closed" : repairBo.updateStatus(StatusType.CLOSED,dto.getRepairId());break;
         }
+        if (status.equals("Processing")){
+            repairBo.updateStatus(StatusType.PROCESSING,dto.getRepairId());
+        }
     }
 
     public void UpdateBtnOnAction(ActionEvent actionEvent) {
