@@ -8,6 +8,7 @@ public class EmailSender {
 
     final String username = "";
     final String password = "";
+
     public void sendReciept(String reciever, byte[] reportBytes) {
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");

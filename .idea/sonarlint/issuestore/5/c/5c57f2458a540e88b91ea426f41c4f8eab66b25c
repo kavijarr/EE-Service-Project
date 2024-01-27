@@ -1,11 +1,11 @@
 
 g	java:S112+"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‘‘ÎÒÒ1
 g	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¥ÄĞÒÒ1
->
-java:S1170	"!Make this final field static too.(°¢áë8½—ÁÛÒ1
->
+C
+java:S1170	"!Make this final field static too.(Ú×âÃşÿÿÿÿ8½—ÁÛÒ1
+C
 java:S1170
-"!Make this final field static too.(Öá‰Û8¾—ÁÛÒ1
+"!Make this final field static too.(¥Á±üÿÿÿÿ8¾—ÁÛÒ1
 W
 java:S1161":Add the "@Override" annotation above this method signature(‡èú×8¡‘ÎÒÒ1
 G	java:S106)"+Replace this use of System.out by a logger.(™ÑËŞ8¥‘ÎÒÒ1
