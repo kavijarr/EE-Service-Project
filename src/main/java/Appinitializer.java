@@ -13,7 +13,7 @@ public class Appinitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderDetailForm.fxml"))));
+        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"))));
         primaryStage.centerOnScreen();
         primaryStage.setResizable(true);
         primaryStage.setTitle("Dashboard");
