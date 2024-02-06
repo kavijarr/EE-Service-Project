@@ -41,6 +41,7 @@ import util.EmailSender;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -166,25 +167,29 @@ public class PlaceOrderFormController {
                         list
                 ));
 
-                if (isSaved){
-                    new Alert(Alert.AlertType.INFORMATION,"Order Succesfully Saved!").show();
+                if (isSaved) {
+                    new Alert(Alert.AlertType.INFORMATION, "Order Successfully Saved!").show();
                     orderBo.setTmList(null);
                     try {
-                        JasperDesign design = JRXmlLoader.load("src/main/resources/reports/orderSummery.jrxml");
+                        JasperDesign design = JRXmlLoader.load(getClass().getResourceAsStream("/reports/orderSummery.jrxml"));
                         JasperReport jasperReport = JasperCompileManager.compileReport(design);
                         JRBeanCollectionDataSource customerReport = orderBo.getOrderSummery(lblOrderId.getText());
-                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,customerReport);
-                        JasperViewer.viewReport(jasperPrint,false);
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, customerReport);
+                        JasperViewer.viewReport(jasperPrint, false);
+
+
                         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                         JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
                         byte[] reportBytes = byteArrayOutputStream.toByteArray();
-                        emailSender.sendReciept(lblCustomerEmail.getText(),reportBytes);
+                        emailSender.sendReciept(lblCustomerEmail.getText(), reportBytes);
+
                     } catch (JRException e) {
                         throw new RuntimeException(e);
                     }
-                }else{
-                    new Alert(Alert.AlertType.ERROR,"Error").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Error").show();
                 }
+
             }
         }
 }

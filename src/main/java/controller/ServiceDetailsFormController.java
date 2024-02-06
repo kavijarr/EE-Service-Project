@@ -28,16 +28,26 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import org.apache.commons.collections.map.HashedMap;
 import tm.PartsTm;
 import util.BoType;
+import util.EmailSender;
 import util.StatusInfo;
 import util.StatusType;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServiceDetailsFormController {
 
@@ -66,6 +76,7 @@ public class ServiceDetailsFormController {
     private List<RepairDetailsDto> list = new ArrayList<>();
     CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     RepairBo repairBo = BoFactory.getInstance().getBo(BoType.REPAIR);
+    EmailSender emailSender = new EmailSender();
     private double total;
 
     public void initialize(){
@@ -76,6 +87,8 @@ public class ServiceDetailsFormController {
 
         Platform.runLater(()->{
             if (dto.getStatus()==StatusInfo.statusType(StatusType.PENDING)){
+                completeOrderBtn.setDisable(true);
+                addPartBtn.setDisable(true);
                 completeOrderBtn.setDisable(true);
             }
         });
@@ -120,6 +133,24 @@ public class ServiceDetailsFormController {
         if (isComplete){
             new Alert(Alert.AlertType.CONFIRMATION,"Order Completed!").show();
             updateStatus("Completed");
+            try {
+                JasperDesign design = JRXmlLoader.load(getClass().getResourceAsStream("/reports/serviceSummery.jrxml"));
+                Map<String, Object> params = new HashMap<String, Object>();
+                params.put("total", repairBo.getTotal(this.dto.getRepairId()));
+                JasperReport jasperReport = JasperCompileManager.compileReport(design);
+                JRBeanCollectionDataSource customerReport = repairBo.getRepairSummery(this.dto.getRepairId());
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, customerReport);
+                JasperViewer.viewReport(jasperPrint, false);
+
+
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                JasperExportManager.exportReportToPdfStream(jasperPrint, byteArrayOutputStream);
+                byte[] reportBytes = byteArrayOutputStream.toByteArray();
+                emailSender.sendReciept(customerBo.getCustomer(this.dto.getCustomerId()).getCustomerEmail(), reportBytes);
+
+            } catch (JRException e) {
+                throw new RuntimeException(e);
+            }
         }else {
             new Alert(Alert.AlertType.ERROR,"Error").show();
         }

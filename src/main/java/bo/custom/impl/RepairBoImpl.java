@@ -8,6 +8,7 @@ import dto.RepairDetailsDto;
 import dto.RepairDto;
 import entity.Repair;
 import entity.RepairDetails;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import util.DaoType;
 import util.StatusInfo;
 import util.StatusType;
@@ -101,6 +102,23 @@ public class RepairBoImpl implements RepairBo {
         );
         repairDto.setList(dtoList);
         return repairDto;
+    }
+
+    @Override
+    public double getTotal(String value) {
+        List<RepairDetailsDto> details = repairdao.getDetails(value);
+        double total=0.0;
+        for (RepairDetailsDto dto: details) {
+            total+=dto.getPrice();
+        }
+        return total;
+    }
+
+    @Override
+    public JRBeanCollectionDataSource getRepairSummery(String value) {
+        List<RepairDetailsDto> details = repairdao.getDetails(value);
+        return new JRBeanCollectionDataSource(details);
+
     }
 
 }

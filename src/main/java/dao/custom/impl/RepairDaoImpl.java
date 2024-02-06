@@ -1,7 +1,10 @@
 package dao.custom.impl;
 
 import dao.custom.Repairdao;
+import dto.OrderDetailsDto;
+import dto.RepairDetailsDto;
 import entity.Item;
+import entity.OrderDetails;
 import entity.Repair;
 import entity.RepairDetails;
 import org.hibernate.Session;
@@ -11,6 +14,7 @@ import util.HibernateUtil;
 import util.StatusInfo;
 import util.StatusType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RepairDaoImpl implements Repairdao {
@@ -95,5 +99,24 @@ public class RepairDaoImpl implements Repairdao {
         transaction.commit();
         session.close();
         return true;
+    }
+
+    @Override
+    public List<RepairDetailsDto> getDetails(String value) {
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM RepairDetails WHERE repairId = :findId");
+        query.setParameter("findId",value);
+        List<RepairDetails> list = query.list();
+        List<RepairDetailsDto> dtoList = new ArrayList<>();
+        for (RepairDetails entity:list) {
+            dtoList.add(new RepairDetailsDto(
+                    entity.getId(),
+                    entity.getPartName(),
+                    entity.getPrice(),
+                    entity.getRepair().getRepairId()
+            ));
+        }
+        session.close();
+        return dtoList;
     }
 }

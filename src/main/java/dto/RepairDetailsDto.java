@@ -7,6 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class RepairDetailsDto {
     private long id;
     private String partName;

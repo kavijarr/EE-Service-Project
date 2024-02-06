@@ -43,7 +43,7 @@ public class ReportsFormController {
 
     public void CustomerReportBtnOnAction(ActionEvent actionEvent) {
         try {
-            JasperDesign design = JRXmlLoader.load("src/main/resources/reports/customerReport.jrxml");
+            JasperDesign design = JRXmlLoader.load(getClass().getResourceAsStream("/reports/customerReport.jrxml"));
             JasperReport jasperReport = JasperCompileManager.compileReport(design);
             JRBeanCollectionDataSource customerReport = customerBo.getCustomerReport();
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,null,customerReport);

@@ -50,8 +50,7 @@ public class OrderBoImpl implements OrderBo {
     @Override
     public JRBeanCollectionDataSource getOrderSummery(String value) {
         List<OrderDetailsDto> orderDetails = orderDao.getOrderDetails(value);
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(orderDetails);
-        return dataSource;
+        return new JRBeanCollectionDataSource(orderDetails);
     }
 
     public void setTmList(ObservableList<OrderTm> list) {
