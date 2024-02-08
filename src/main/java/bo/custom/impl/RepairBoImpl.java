@@ -116,9 +116,20 @@ public class RepairBoImpl implements RepairBo {
 
     @Override
     public JRBeanCollectionDataSource getRepairSummery(String value) {
-        List<RepairDetailsDto> details = repairdao.getDetails(value);
-        return new JRBeanCollectionDataSource(details);
-
+//        List<RepairDetailsDto> details = repairdao.getDetails(value);
+//        return new JRBeanCollectionDataSource(details);
+        Repair repair = repairdao.getRepair(value);
+        List<RepairDetails> list = repair.getList();
+        List<RepairDetailsDto> dtoList = new ArrayList<>();
+        for (RepairDetails entity: list) {
+            dtoList.add(new RepairDetailsDto(
+                    entity.getId(),
+                    entity.getPartName(),
+                    entity.getPrice(),
+                    entity.getRepair().getRepairId()
+            ));
+        }
+        return new JRBeanCollectionDataSource(dtoList);
     }
 
 }
